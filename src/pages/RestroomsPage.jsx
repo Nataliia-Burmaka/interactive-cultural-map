@@ -3,12 +3,14 @@ import { useNavigate } from "react-router-dom";
 import {
   MapContainer,
   TileLayer,
-  CircleMarker,
+  Marker,
   Tooltip,
-  Popup,
+  CircleMarker,
 } from "react-leaflet";
+import L from "leaflet";
 import "leaflet/dist/leaflet.css";
 import { restrooms } from "../data/restrooms";
+import { places } from "../data/places";
 
 function getDistanceMeters([lat1, lng1], [lat2, lng2]) {
   const toRad = (deg) => (deg * Math.PI) / 180;
@@ -33,18 +35,48 @@ function formatDistance(meters) {
   return `${(meters / 1000).toFixed(1)} km`;
 }
 
-function getRestroomColors(type) {
-  if (type === "Free") {
-    return {
-      stroke: "#059669",
-      fill: "#34d399",
-    };
-  }
+function createRestroomIcon(type) {
+  const bg = type === "Free" ? "#d1fae5" : "#fef3c7";
+  const border = type === "Free" ? "#059669" : "#d97706";
 
-  return {
-    stroke: "#d97706",
-    fill: "#fbbf24",
-  };
+  return L.divIcon({
+    className: "custom-restroom-icon",
+    html: `
+      <div style="
+        background:${bg};
+        border:2px solid ${border};
+        border-radius:12px;
+        width:34px;
+        height:34px;
+        display:flex;
+        align-items:center;
+        justify-content:center;
+        font-size:18px;
+        box-shadow:0 6px 14px rgba(0,0,0,0.15);
+      ">
+        🚻
+      </div>
+    `,
+    iconSize: [34, 34],
+    iconAnchor: [17, 17],
+  });
+}
+
+function getCategoryColor(category) {
+  switch (category) {
+    case "Architectural DNA":
+      return { stroke: "#c2415d", fill: "#fb7185" };
+    case "Living Traditions":
+      return { stroke: "#b45309", fill: "#f59e0b" };
+    case "Contemporary City":
+      return { stroke: "#7c3aed", fill: "#a78bfa" };
+    case "Nature–Cultural Gems":
+      return { stroke: "#047857", fill: "#34d399" };
+    case "Sports Capital":
+      return { stroke: "#1d4ed8", fill: "#60a5fa" };
+    default:
+      return { stroke: "#1f2937", fill: "#111827" };
+  }
 }
 
 function RestroomsPage() {
@@ -71,8 +103,30 @@ function RestroomsPage() {
     );
   }, [restroomsWithDistance, selectedRestroomId]);
 
-  function handleNavigate() {
-    alert("Navigation will be connected in a later step.");
+  const nearbySuggestions = useMemo(() => {
+    if (!selectedRestroom) return [];
+
+    return places
+      .map((place) => ({
+        ...place,
+        nearbyDistance: getDistanceMeters(
+          selectedRestroom.coordinates,
+          place.coordinates,
+        ),
+      }))
+      .sort((a, b) => a.nearbyDistance - b.nearbyDistance)
+      .slice(0, 2);
+  }, [selectedRestroom]);
+
+  function handleNavigate(restroom) {
+    if (!restroom?.coordinates) return;
+
+    const [lat, lng] = restroom.coordinates;
+    window.open(`https://www.google.com/maps?q=${lat},${lng}`, "_blank");
+  }
+
+  function handleOpenPlace(placeId) {
+    navigate(`/place/${placeId}`);
   }
 
   return (
@@ -112,37 +166,28 @@ function RestroomsPage() {
               url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
             />
 
-            {restroomsWithDistance.map((restroom) => {
-              const colors = getRestroomColors(restroom.type);
-              const isActive = restroom.id === selectedRestroomId;
-
-              return (
-                <CircleMarker
-                  key={restroom.id}
-                  center={restroom.coordinates}
-                  radius={isActive ? 12 : 10}
-                  pathOptions={{
-                    color: isActive ? "#0f172a" : colors.stroke,
-                    fillColor: colors.fill,
-                    fillOpacity: 0.95,
-                    weight: isActive ? 3 : 2,
-                  }}
-                  eventHandlers={{
-                    click: () => setSelectedRestroomId(restroom.id),
-                  }}
-                >
-                  <Tooltip direction="top" offset={[0, -8]} opacity={1}>
-                    {restroom.title}
-                  </Tooltip>
-
-                  <Popup>
+            {restroomsWithDistance.map((restroom) => (
+              <Marker
+                key={restroom.id}
+                position={restroom.coordinates}
+                icon={createRestroomIcon(restroom.type)}
+                eventHandlers={{
+                  click: () => setSelectedRestroomId(restroom.id),
+                }}
+              >
+                <Tooltip direction="top" offset={[0, -10]} opacity={1}>
+                  <div className="map-hover-hint">
                     <strong>{restroom.title}</strong>
                     <br />
                     {restroom.type} restroom
-                  </Popup>
-                </CircleMarker>
-              );
-            })}
+                    <br />
+                    {restroom.accessible
+                      ? "Accessible"
+                      : "Not marked accessible"}
+                  </div>
+                </Tooltip>
+              </Marker>
+            ))}
 
             <CircleMarker
               center={userPosition}
@@ -229,8 +274,11 @@ function RestroomsPage() {
                 </p>
 
                 <div className="map-preview-actions">
-                  <button className="navigate-button" onClick={handleNavigate}>
-                    Navigate
+                  <button
+                    className="navigate-button"
+                    onClick={() => handleNavigate(selectedRestroom)}
+                  >
+                    Open in Maps
                   </button>
 
                   <button
@@ -240,6 +288,51 @@ function RestroomsPage() {
                     Close
                   </button>
                 </div>
+
+                {nearbySuggestions.length > 0 && (
+                  <div className="restroom-nearby-box">
+                    <p className="restroom-nearby-title">
+                      While you&apos;re here…
+                    </p>
+                    <p className="restroom-nearby-text">
+                      These cultural places are nearby too.
+                    </p>
+
+                    <div className="restroom-nearby-list">
+                      {nearbySuggestions.map((place) => {
+                        const colors = getCategoryColor(place.category);
+
+                        return (
+                          <button
+                            key={place.id}
+                            className="restroom-nearby-item"
+                            onClick={() => handleOpenPlace(place.id)}
+                          >
+                            <div className="restroom-nearby-item-top">
+                              <span className="restroom-nearby-name">
+                                {place.title}
+                              </span>
+                              <span className="restroom-nearby-distance">
+                                {formatDistance(place.nearbyDistance)}
+                              </span>
+                            </div>
+
+                            <span className="restroom-nearby-category">
+                              <span
+                                className="restroom-nearby-color"
+                                style={{
+                                  backgroundColor: colors.fill,
+                                  borderColor: colors.stroke,
+                                }}
+                              />
+                              {place.category}
+                            </span>
+                          </button>
+                        );
+                      })}
+                    </div>
+                  </div>
+                )}
               </div>
             </div>
           )}
