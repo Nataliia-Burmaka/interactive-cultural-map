@@ -2224,3 +2224,18 @@ img {
     min-height: 96px;
   }
 }
+.restroom-nearby-category {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  color: #4b5563;
+}
+
+.restroom-nearby-color {
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
+  border: 2px solid transparent;
+  flex-shrink: 0;
+}
