@@ -16,7 +16,10 @@ function HomeScreen({ selectedCategories, onToggleCategory, onContinue }) {
       </div>
 
       <section className="home-hero">
-        <p className="home-eyebrow">City discovery companion</p>
+        <p className="home-eyebrow">
+          <span className="eyebrow-dot" />
+          City discovery companion
+        </p>
         <h1>Jyväskylä Unique</h1>
         <p className="subtitle subtitle--hero">
           A lightweight city companion that helps visitors discover what defines

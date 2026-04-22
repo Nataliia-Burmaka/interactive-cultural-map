@@ -4,83 +4,97 @@ import { places } from "../data/places";
 
 function SavedPage() {
   const navigate = useNavigate();
+
   const [savedIds, setSavedIds] = useState([]);
+  const [savedWalkMode, setSavedWalkMode] = useState(false);
 
   useEffect(() => {
-    const saved = JSON.parse(localStorage.getItem("savedPlaces") || "[]");
-    setSavedIds(saved);
+    const savedPlaces = JSON.parse(localStorage.getItem("savedPlaces") || "[]");
+    setSavedIds(savedPlaces);
+
+    const savedWalk = JSON.parse(
+      localStorage.getItem("savedWalkMode") || "false",
+    );
+    setSavedWalkMode(savedWalk);
   }, []);
 
   const savedPlaces = useMemo(() => {
     return places.filter((place) => savedIds.includes(place.id));
   }, [savedIds]);
 
-  function handleRemove(placeId) {
-    const updated = savedIds.filter((id) => id !== placeId);
+  function handleRemove(id) {
+    const updated = savedIds.filter((itemId) => itemId !== id);
     setSavedIds(updated);
     localStorage.setItem("savedPlaces", JSON.stringify(updated));
+
+    if (updated.length === 0) {
+      setSavedWalkMode(false);
+      localStorage.setItem("savedWalkMode", JSON.stringify(false));
+    }
+  }
+
+  function handleToggleSavedWalk() {
+    const nextValue = !savedWalkMode;
+    setSavedWalkMode(nextValue);
+    localStorage.setItem("savedWalkMode", JSON.stringify(nextValue));
   }
 
   return (
     <div className="container">
-      <div className="top-row saved-top-row">
+      <div className="saved-top-row">
         <button className="back-button" onClick={() => navigate(-1)}>
           ← Back
         </button>
-
-        <div className="saved-actions-group">
-          <button className="saved-link-button" onClick={() => navigate("/")}>
-            Explore more
-          </button>
-          <button
-            className="saved-link-button"
-            onClick={() => navigate("/map")}
-          >
-            Open map
-          </button>
-        </div>
       </div>
 
       <h1 className="results-title">Saved places</h1>
-
       <p className="saved-subtitle">
-        You saved {savedPlaces.length} place
-        {savedPlaces.length !== 1 ? "s" : ""}
+        Keep track of the places you want to explore.
       </p>
 
-      {savedPlaces.length > 1 && (
-        <div className="saved-hint">You already have a route forming</div>
+      {savedPlaces.length > 0 && (
+        <div className="saved-walk-panel">
+          <div className="saved-walk-panel-text">
+            <h2>Walking alerts</h2>
+            <p>Get notified when you are near places you saved.</p>
+          </div>
+
+          <button
+            className={`saved-walk-button ${
+              savedWalkMode ? "saved-walk-button--active" : ""
+            }`}
+            onClick={handleToggleSavedWalk}
+          >
+            {savedWalkMode ? "Stop saved walk" : "Start saved walk"}
+          </button>
+        </div>
       )}
 
       {savedPlaces.length === 0 ? (
         <div className="empty-state">
           <div className="empty-state-icon">☆</div>
           <h2>No saved places yet</h2>
-          <p>
-            Save places from the results or details page to build your personal
-            city shortlist.
-          </p>
-          <button className="primary-button" onClick={() => navigate("/")}>
-            Start exploring
-          </button>
+          <p>Save places from the map or details page to find them here.</p>
         </div>
       ) : (
-        <>
-          <h2 className="saved-section-title">Your city shortlist</h2>
+        <div className="results-list">
+          {savedPlaces.map((place) => (
+            <article key={place.id} className="place-card">
+              <img
+                src={place.image}
+                alt={place.title}
+                className="place-image"
+              />
 
-          <div className="results-list">
-            {savedPlaces.map((place) => (
-              <div key={place.id} className="place-card">
-                <div className="place-card-top">
-                  <h2>{place.title}</h2>
-                  <span className="saved-badge saved-badge--active">Saved</span>
-                </div>
-
-                <div className="place-meta">
+              <div className="place-content">
+                <div className="place-topline">
                   <span className="pill">{place.category}</span>
-                  <span className="dna">DNA {place.dna}</span>
+                  <span className="saved-inline saved-inline--active">
+                    Saved
+                  </span>
                 </div>
 
+                <h2>{place.title}</h2>
                 <p className="place-description">{place.description}</p>
 
                 <div className="place-actions">
@@ -99,9 +113,9 @@ function SavedPage() {
                   </button>
                 </div>
               </div>
-            ))}
-          </div>
-        </>
+            </article>
+          ))}
+        </div>
       )}
     </div>
   );

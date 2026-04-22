@@ -123,6 +123,7 @@ function MapPage() {
   const navigate = useNavigate();
 
   const fallbackPosition = [62.2398, 25.7462];
+
   const [userPosition, setUserPosition] = useState(fallbackPosition);
   const [locationStatus, setLocationStatus] = useState("loading");
   const [dismissedAlert, setDismissedAlert] = useState(false);
@@ -131,6 +132,10 @@ function MapPage() {
   const [alertVisible, setAlertVisible] = useState(false);
   const [hasInteractedWithMap, setHasInteractedWithMap] = useState(false);
   const [showRestrooms, setShowRestrooms] = useState(false);
+
+  const [savedWalkMode, setSavedWalkMode] = useState(false);
+  const [savedIds, setSavedIds] = useState([]);
+  const [savedWalkAlertPlace, setSavedWalkAlertPlace] = useState(null);
 
   useEffect(() => {
     if (!navigator.geolocation) {
@@ -154,6 +159,16 @@ function MapPage() {
     );
   }, []);
 
+  useEffect(() => {
+    const savedWalk = JSON.parse(
+      localStorage.getItem("savedWalkMode") || "false",
+    );
+    const savedPlaces = JSON.parse(localStorage.getItem("savedPlaces") || "[]");
+
+    setSavedWalkMode(savedWalk);
+    setSavedIds(savedPlaces);
+  }, []);
+
   const placesWithDistance = useMemo(() => {
     return places
       .map((place) => ({
@@ -162,6 +177,16 @@ function MapPage() {
       }))
       .sort((a, b) => a.distanceMeters - b.distanceMeters);
   }, [userPosition]);
+
+  const savedPlacesNearby = useMemo(() => {
+    return places
+      .filter((place) => savedIds.includes(place.id))
+      .map((place) => ({
+        ...place,
+        distanceMeters: getDistanceMeters(userPosition, place.coordinates),
+      }))
+      .sort((a, b) => a.distanceMeters - b.distanceMeters);
+  }, [savedIds, userPosition]);
 
   const nearestPlace = placesWithDistance[0] || null;
 
@@ -209,7 +234,8 @@ function MapPage() {
     !dismissedAlert &&
     !selectedPlace &&
     !selectedRestroom &&
-    !hasInteractedWithMap;
+    !hasInteractedWithMap &&
+    !savedWalkAlertPlace;
 
   useEffect(() => {
     if (showNearbyAlert) {
@@ -222,6 +248,25 @@ function MapPage() {
 
     setAlertVisible(false);
   }, [showNearbyAlert]);
+
+  useEffect(() => {
+    if (!savedWalkMode || savedPlacesNearby.length === 0) {
+      setSavedWalkAlertPlace(null);
+      return;
+    }
+
+    const nearestSaved = savedPlacesNearby[0];
+
+    if (
+      nearestSaved.distanceMeters <= 250 &&
+      !selectedPlace &&
+      !selectedRestroom
+    ) {
+      setSavedWalkAlertPlace(nearestSaved);
+    } else {
+      setSavedWalkAlertPlace(null);
+    }
+  }, [savedWalkMode, savedPlacesNearby, selectedPlace, selectedRestroom]);
 
   function handleOpenNearestCard() {
     if (!nearestPlace) return;
@@ -243,6 +288,7 @@ function MapPage() {
     setDismissedAlert(true);
     setHasInteractedWithMap(true);
     setAlertVisible(false);
+    setSavedWalkAlertPlace(null);
   }
 
   function handleSelectRestroom(restroomId) {
@@ -270,7 +316,10 @@ function MapPage() {
   }
 
   function handleNavigate() {
-    alert("Navigation will be connected in a later step.");
+    if (!selectedRestroom?.coordinates) return;
+
+    const [lat, lng] = selectedRestroom.coordinates;
+    window.open(`https://www.google.com/maps?q=${lat},${lng}`, "_blank");
   }
 
   return (
@@ -459,6 +508,35 @@ function MapPage() {
                 </button>
 
                 <button className="secondary-button" onClick={handleLater}>
+                  Later
+                </button>
+              </div>
+            </div>
+          )}
+
+          {savedWalkAlertPlace && (
+            <div className="saved-walk-alert">
+              <div className="saved-walk-alert-badge">Saved walk</div>
+
+              <p className="saved-walk-alert-title">You saved this place</p>
+
+              <p className="saved-walk-alert-text">
+                {savedWalkAlertPlace.title} is{" "}
+                {formatDistance(savedWalkAlertPlace.distanceMeters)} away.
+              </p>
+
+              <div className="saved-walk-alert-actions">
+                <button
+                  className="primary-button"
+                  onClick={() => handleSelectPlace(savedWalkAlertPlace.id)}
+                >
+                  Open saved place
+                </button>
+
+                <button
+                  className="secondary-button"
+                  onClick={() => setSavedWalkAlertPlace(null)}
+                >
                   Later
                 </button>
               </div>
