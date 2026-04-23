@@ -136,6 +136,7 @@ function MapPage() {
   const [savedWalkMode, setSavedWalkMode] = useState(false);
   const [savedIds, setSavedIds] = useState([]);
   const [savedWalkAlertPlace, setSavedWalkAlertPlace] = useState(null);
+  const [dismissedSavedWalkId, setDismissedSavedWalkId] = useState(null);
   const [selectedCategories, setSelectedCategories] = useState([]);
 
   useEffect(() => {
@@ -267,10 +268,13 @@ function MapPage() {
     if (
       nearestSaved.distanceMeters <= 250 &&
       !selectedPlace &&
-      !selectedRestroom
+      !selectedRestroom &&
+      dismissedSavedWalkId !== nearestSaved.id
     ) {
       if (savedWalkAlertPlace?.id !== nearestSaved.id) {
-        new Audio("/ping.mp3").play().catch(() => {});
+        const audio = new Audio("/ping.mp3");
+        audio.volume = 0.35;
+        audio.play().catch(() => {});
         navigator.vibrate?.(200);
       }
 
@@ -284,6 +288,7 @@ function MapPage() {
     selectedPlace,
     selectedRestroom,
     savedWalkAlertPlace,
+    dismissedSavedWalkId,
   ]);
 
   function handleOpenNearestCard() {
@@ -528,7 +533,13 @@ function MapPage() {
                   Open card
                 </button>
 
-                <button className="secondary-button" onClick={handleLater}>
+                <button
+                  className="secondary-button"
+                  onClick={() => {
+                    setDismissedSavedWalkId(savedWalkAlertPlace.id);
+                    setSavedWalkAlertPlace(null);
+                  }}
+                >
                   Later
                 </button>
               </div>
@@ -549,15 +560,15 @@ function MapPage() {
               <div className="saved-walk-alert-actions">
                 <button
                   className="primary-button"
-                  onClick={() => handleSelectPlace(savedWalkAlertPlace.id)}
+                  onClick={() => {
+                    setDismissedSavedWalkId(savedWalkAlertPlace.id);
+                    handleSelectPlace(savedWalkAlertPlace.id);
+                  }}
                 >
                   Open saved place
                 </button>
 
-                <button
-                  className="secondary-button"
-                  onClick={() => setSavedWalkAlertPlace(null)}
-                >
+                <button className="secondary-button" onClick={handleLater}>
                   Later
                 </button>
               </div>
