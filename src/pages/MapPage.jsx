@@ -136,6 +136,7 @@ function MapPage() {
   const [savedWalkMode, setSavedWalkMode] = useState(false);
   const [savedIds, setSavedIds] = useState([]);
   const [savedWalkAlertPlace, setSavedWalkAlertPlace] = useState(null);
+  const [selectedCategories, setSelectedCategories] = useState([]);
 
   useEffect(() => {
     if (!navigator.geolocation) {
@@ -164,9 +165,13 @@ function MapPage() {
       localStorage.getItem("savedWalkMode") || "false",
     );
     const savedPlaces = JSON.parse(localStorage.getItem("savedPlaces") || "[]");
+    const storedCategories = JSON.parse(
+      localStorage.getItem("selectedCategories") || "[]",
+    );
 
     setSavedWalkMode(savedWalk);
     setSavedIds(savedPlaces);
+    setSelectedCategories(storedCategories);
   }, []);
 
   const placesWithDistance = useMemo(() => {
@@ -228,9 +233,11 @@ function MapPage() {
       .slice(0, 2);
   }, [selectedRestroom]);
 
+  const isSoftMode = selectedCategories.length === 0;
+
   const showNearbyAlert =
     nearestPlace &&
-    nearestPlace.distanceMeters <= 400 &&
+    nearestPlace.distanceMeters <= (isSoftMode ? 200 : 400) &&
     !dismissedAlert &&
     !selectedPlace &&
     !selectedRestroom &&
@@ -262,11 +269,22 @@ function MapPage() {
       !selectedPlace &&
       !selectedRestroom
     ) {
+      if (savedWalkAlertPlace?.id !== nearestSaved.id) {
+        new Audio("/ping.mp3").play().catch(() => {});
+        navigator.vibrate?.(200);
+      }
+
       setSavedWalkAlertPlace(nearestSaved);
     } else {
       setSavedWalkAlertPlace(null);
     }
-  }, [savedWalkMode, savedPlacesNearby, selectedPlace, selectedRestroom]);
+  }, [
+    savedWalkMode,
+    savedPlacesNearby,
+    selectedPlace,
+    selectedRestroom,
+    savedWalkAlertPlace,
+  ]);
 
   function handleOpenNearestCard() {
     if (!nearestPlace) return;
@@ -487,12 +505,15 @@ function MapPage() {
               <div className="nearby-alert-badge">Nearby cultural signal</div>
 
               <p className="nearby-alert-title">
-                You are {formatDistance(nearestPlace.distanceMeters)} from a
-                place with high cultural impact
+                {isSoftMode
+                  ? `Something interesting is ${formatDistance(nearestPlace.distanceMeters)} away`
+                  : `You are ${formatDistance(nearestPlace.distanceMeters)} from a place with high cultural impact`}
               </p>
 
               <p className="nearby-alert-text">
-                {nearestPlace.title} is nearby. Want to discover it?
+                {isSoftMode
+                  ? `${nearestPlace.title} is nearby. Explore if you're curious.`
+                  : `${nearestPlace.title} is nearby. Want to discover it?`}
               </p>
 
               <p className="nearby-alert-microcopy">

@@ -20,6 +20,12 @@ function HomePage() {
       return;
     }
 
+    // 👉 (soft mode)
+    localStorage.setItem(
+      "selectedCategories",
+      JSON.stringify(selectedCategories),
+    );
+
     const query = selectedCategories.join("|");
     navigate(`/results?categories=${encodeURIComponent(query)}`);
   }
