@@ -2995,3 +2995,168 @@ img {
     z-index: 760;
   }
 }
+/* ===== Category pills across app ===== */
+
+.category-pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 30px;
+  padding: 6px 12px;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 600;
+  border: 1px solid transparent;
+  white-space: nowrap;
+}
+
+.category-pill--architectural-dna {
+  background: #fff1f3;
+  border-color: #fecdd3;
+  color: #9f1239;
+}
+
+.category-pill--living-traditions {
+  background: #fffbeb;
+  border-color: #fde68a;
+  color: #92400e;
+}
+
+.category-pill--contemporary-city {
+  background: #f5f3ff;
+  border-color: #ddd6fe;
+  color: #6d28d9;
+}
+
+.category-pill--nature-cultural-gems {
+  background: #ecfdf5;
+  border-color: #a7f3d0;
+  color: #047857;
+}
+
+.category-pill--sports-capital {
+  background: #eff6ff;
+  border-color: #bfdbfe;
+  color: #1d4ed8;
+}
+
+/* ===== Results / Saved navigation ===== */
+
+.results-top-actions {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.results-map-entry {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  padding: 18px 20px;
+  margin: 12px 0 22px;
+  border-radius: 22px;
+  background: linear-gradient(180deg, #ffffff 0%, #fafcff 100%);
+  border: 1px solid rgba(17, 24, 39, 0.05);
+  box-shadow: 0 10px 24px rgba(15, 23, 42, 0.06);
+}
+
+.results-map-entry-text h2 {
+  margin: 0 0 4px;
+  font-size: 20px;
+}
+
+.results-map-entry-text p {
+  margin: 0;
+  color: #6b7280;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+/* ===== Place page map return ===== */
+
+.place-nav-actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.place-nav-actions .secondary-button,
+.place-nav-actions .navigate-button {
+  min-height: 46px;
+}
+
+/* ===== Results card buttons lighter ===== */
+
+.place-actions .secondary-button {
+  background: #f3f5f8;
+  color: #111827;
+  border: 1px solid #e5e7eb;
+}
+
+.place-actions .secondary-button:hover {
+  background: #eceff3;
+}
+
+@media (max-width: 640px) {
+  .results-map-entry {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .results-map-entry .primary-button {
+    width: 100%;
+  }
+
+  .results-top-actions {
+    flex-wrap: wrap;
+  }
+
+  .place-nav-actions {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    width: 100%;
+  }
+}
+button {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.floating-map-button {
+  position: fixed;
+  right: 18px;
+  bottom: 18px;
+  z-index: 900;
+  width: 56px;
+  height: 56px;
+  border: none;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.96);
+  color: #111827;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  box-shadow: 0 12px 28px rgba(15, 23, 42, 0.14);
+  border: 1px solid rgba(17, 24, 39, 0.06);
+  backdrop-filter: blur(10px);
+  cursor: pointer;
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+}
+
+.floating-map-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 16px 32px rgba(15, 23, 42, 0.18);
+}
+
+@media (max-width: 640px) {
+  .floating-map-button {
+    right: 12px;
+    bottom: 12px;
+    width: 52px;
+    height: 52px;
+    border-radius: 16px;
+    font-size: 22px;
+  }
+}

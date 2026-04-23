@@ -646,7 +646,7 @@ function MapPage() {
 
                 <div className="map-preview-actions">
                   <button className="navigate-button" onClick={handleNavigate}>
-                    Navigate
+                    📍 Open in Google Maps
                   </button>
 
                   <button

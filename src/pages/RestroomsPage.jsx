@@ -278,7 +278,7 @@ function RestroomsPage() {
                     className="navigate-button"
                     onClick={() => handleNavigate(selectedRestroom)}
                   >
-                    Open in Maps
+                    Open in Google Maps
                   </button>
 
                   <button

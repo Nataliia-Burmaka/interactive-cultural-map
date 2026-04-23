@@ -51,6 +51,12 @@ function FeatureIcons({ features }) {
   );
 }
 
+function getCategoryClass(category) {
+  return `category-pill category-pill--${category
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")}`;
+}
+
 function PlacePage() {
   const navigate = useNavigate();
   const { id } = useParams();
@@ -129,7 +135,9 @@ function PlacePage() {
         </div>
 
         <div className="details-meta-row">
-          <span className="pill pill--gold">{place.category}</span>
+          <span className={getCategoryClass(place.category)}>
+            {place.category}
+          </span>
           <span
             className={`saved-inline ${saved ? "saved-inline--active" : ""}`}
           >
@@ -214,14 +222,17 @@ function PlacePage() {
             </section>
           )}
 
-          <div className="navigate-block">
-            <button className="navigate-button" onClick={handleNavigate}>
-              Open in Maps
+          <div className="place-nav-actions">
+            <button
+              className="secondary-button"
+              onClick={() => navigate("/map")}
+            >
+              🧭 Back to cultural map
             </button>
-            <p className="navigate-note">
-              Navigate from your current location or open this place later on
-              the map.
-            </p>
+
+            <button className="navigate-button" onClick={handleNavigate}>
+              📍 Open in Google Maps
+            </button>
           </div>
 
           <button className="save-button" onClick={handleSaveToggle}>

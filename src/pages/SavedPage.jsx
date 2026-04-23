@@ -2,6 +2,12 @@ import { useEffect, useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { places } from "../data/places";
 
+function getCategoryClass(category) {
+  return `category-pill category-pill--${category
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")}`;
+}
+
 function SavedPage() {
   const navigate = useNavigate();
 
@@ -45,6 +51,15 @@ function SavedPage() {
         <button className="back-button" onClick={() => navigate(-1)}>
           ← Back
         </button>
+
+        <div className="results-top-actions">
+          <button
+            className="saved-link-button"
+            onClick={() => navigate("/map")}
+          >
+            🧭 Open cultural map
+          </button>
+        </div>
       </div>
 
       <h1 className="results-title">Saved places</h1>
@@ -88,10 +103,13 @@ function SavedPage() {
 
               <div className="place-content">
                 <div className="place-topline">
-                  <span className="pill">{place.category}</span>
+                  <span className={getCategoryClass(place.category)}>
+                    {place.category}
+                  </span>
                   <span className="saved-inline saved-inline--active">
                     Saved
                   </span>
+                  <span className="dna">DNA {place.dna}</span>
                 </div>
 
                 <h2>{place.title}</h2>
@@ -117,6 +135,15 @@ function SavedPage() {
           ))}
         </div>
       )}
+
+      <button
+        className="floating-map-button"
+        onClick={() => navigate("/map")}
+        aria-label="Open cultural map"
+        title="Open cultural map"
+      >
+        🧭
+      </button>
     </div>
   );
 }
