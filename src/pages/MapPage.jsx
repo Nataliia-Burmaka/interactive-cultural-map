@@ -136,7 +136,7 @@ function MapPage() {
   const [savedWalkMode, setSavedWalkMode] = useState(false);
   const [savedIds, setSavedIds] = useState([]);
   const [savedWalkAlertPlace, setSavedWalkAlertPlace] = useState(null);
-  const [dismissedSavedWalkId, setDismissedSavedWalkId] = useState(null);
+  const [dismissedSavedWalkIds, setDismissedSavedWalkIds] = useState([]);
   const [selectedCategories, setSelectedCategories] = useState([]);
 
   useEffect(() => {
@@ -264,12 +264,14 @@ function MapPage() {
     }
 
     const nearestSaved = savedPlacesNearby[0];
+    const nearestSavedId = String(nearestSaved.id);
+    const isDismissed = dismissedSavedWalkIds.includes(nearestSavedId);
 
     if (
       nearestSaved.distanceMeters <= 250 &&
       !selectedPlace &&
       !selectedRestroom &&
-      dismissedSavedWalkId !== nearestSaved.id
+      !isDismissed
     ) {
       if (savedWalkAlertPlace?.id !== nearestSaved.id) {
         const audio = new Audio("/ping.mp3");
@@ -288,7 +290,7 @@ function MapPage() {
     selectedPlace,
     selectedRestroom,
     savedWalkAlertPlace,
-    dismissedSavedWalkId,
+    dismissedSavedWalkIds,
   ]);
 
   function handleOpenNearestCard() {
@@ -561,14 +563,30 @@ function MapPage() {
                 <button
                   className="primary-button"
                   onClick={() => {
-                    setDismissedSavedWalkId(savedWalkAlertPlace.id);
+                    const id = String(savedWalkAlertPlace.id);
+
+                    setDismissedSavedWalkIds((prev) =>
+                      prev.includes(id) ? prev : [...prev, id],
+                    );
+
                     handleSelectPlace(savedWalkAlertPlace.id);
                   }}
                 >
                   Open saved place
                 </button>
 
-                <button className="secondary-button" onClick={handleLater}>
+                <button
+                  className="secondary-button"
+                  onClick={() => {
+                    const id = String(savedWalkAlertPlace.id);
+
+                    setDismissedSavedWalkIds((prev) =>
+                      prev.includes(id) ? prev : [...prev, id],
+                    );
+
+                    setSavedWalkAlertPlace(null);
+                  }}
+                >
                   Later
                 </button>
               </div>
