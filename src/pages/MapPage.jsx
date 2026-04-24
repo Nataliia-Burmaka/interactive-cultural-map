@@ -243,7 +243,8 @@ function MapPage() {
     !selectedPlace &&
     !selectedRestroom &&
     !hasInteractedWithMap &&
-    !savedWalkAlertPlace;
+    !savedWalkAlertPlace &&
+    !savedWalkMode;
 
   useEffect(() => {
     if (showNearbyAlert) {
@@ -263,15 +264,19 @@ function MapPage() {
       return;
     }
 
-    const nearestSaved = savedPlacesNearby[0];
-    const nearestSavedId = String(nearestSaved.id);
-    const isDismissed = dismissedSavedWalkIds.includes(nearestSavedId);
+    const nearestSaved = savedPlacesNearby.find(
+      (place) => !dismissedSavedWalkIds.includes(String(place.id)),
+    );
+
+    if (!nearestSaved) {
+      setSavedWalkAlertPlace(null);
+      return;
+    }
 
     if (
       nearestSaved.distanceMeters <= 250 &&
       !selectedPlace &&
-      !selectedRestroom &&
-      !isDismissed
+      !selectedRestroom
     ) {
       if (savedWalkAlertPlace?.id !== nearestSaved.id) {
         const audio = new Audio("/ping.mp3");
@@ -535,13 +540,7 @@ function MapPage() {
                   Open card
                 </button>
 
-                <button
-                  className="secondary-button"
-                  onClick={() => {
-                    setDismissedSavedWalkId(savedWalkAlertPlace.id);
-                    setSavedWalkAlertPlace(null);
-                  }}
-                >
+                <button className="secondary-button" onClick={handleLater}>
                   Later
                 </button>
               </div>
