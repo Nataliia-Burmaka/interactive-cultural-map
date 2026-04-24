@@ -137,6 +137,7 @@ function MapPage() {
   const [savedIds, setSavedIds] = useState([]);
   const [savedWalkAlertPlace, setSavedWalkAlertPlace] = useState(null);
   const [dismissedSavedWalkIds, setDismissedSavedWalkIds] = useState([]);
+  const [savedWalkSnoozed, setSavedWalkSnoozed] = useState(false);
   const [selectedCategories, setSelectedCategories] = useState([]);
 
   useEffect(() => {
@@ -259,7 +260,7 @@ function MapPage() {
   }, [showNearbyAlert]);
 
   useEffect(() => {
-    if (!savedWalkMode || savedPlacesNearby.length === 0) {
+    if (savedWalkSnoozed || !savedWalkMode || savedPlacesNearby.length === 0) {
       setSavedWalkAlertPlace(null);
       return;
     }
@@ -290,6 +291,7 @@ function MapPage() {
       setSavedWalkAlertPlace(null);
     }
   }, [
+    savedWalkSnoozed,
     savedWalkMode,
     savedPlacesNearby,
     selectedPlace,
@@ -577,12 +579,7 @@ function MapPage() {
                 <button
                   className="secondary-button"
                   onClick={() => {
-                    const id = String(savedWalkAlertPlace.id);
-
-                    setDismissedSavedWalkIds((prev) =>
-                      prev.includes(id) ? prev : [...prev, id],
-                    );
-
+                    setSavedWalkSnoozed(true);
                     setSavedWalkAlertPlace(null);
                   }}
                 >
