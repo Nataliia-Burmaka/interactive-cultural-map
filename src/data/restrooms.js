@@ -5,7 +5,7 @@ export const restrooms = [
     type: "Free",
     accessible: true,
     description: "Free public restroom inside Sokos.",
-    coordinates: [62.2418, 25.7465],
+    coordinates: [62.2425, 25.7485],
   },
   {
     id: 2,
@@ -61,7 +61,7 @@ export const restrooms = [
     type: "Paid",
     accessible: true,
     description: "Indoor restroom in shopping center.",
-    coordinates: [62.2429, 25.7448],
+    coordinates: [62.2418, 25.7465],
   },
   {
     id: 9,

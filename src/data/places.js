@@ -481,7 +481,7 @@ export const places = [
     ],
     liveEvents: ["Sports community activity — demo"],
     story:
-      "Hippos is one of the places where Jyväskylä’s sports culture becomes visible in everyday life.",
+      "In Jyväskylä, sport is not an activity — it is part of how the city defines itself.",
   },
   {
     id: 19,
@@ -611,7 +611,7 @@ export const places = [
     ],
     liveEvents: ["Public swimming hours — ongoing"],
     story:
-      "AaltoAlvari shows how sport in Jyväskylä is not only elite performance, but also everyday health and public access.",
+      "AaltoAlvari is more than a swimming hall — it reveals how the city expands into rock, turning natural mass into functional and human space. A unique swimming complex partly carved directly into solid rock.",
   },
   {
     id: 24,
@@ -837,7 +837,7 @@ export const places = [
       "A conceptual point for sauna as a living Finnish tradition connected to wellbeing, community, water, and silence.",
     shortImpact: "Finnish living tradition",
     features: { busAccess: true, paidEntry: true, accessible: false },
-    coordinates: [62.2415, 25.7592],
+    coordinates: [62.1315, 25.7538],
     indicators: createIndicators(5, 5, 5),
     impactSignals: [
       "Core Finnish cultural practice",
@@ -846,7 +846,7 @@ export const places = [
     ],
     liveEvents: ["Public sauna evening — demo"],
     story:
-      "Sauna is not just a service. It is a cultural rhythm: heat, water, silence, conversation, and a shared understanding of wellbeing.",
+      "Sauna is a cultural rhythm: heat, water, silence, conversation, and a shared understanding of wellbeing. A natural island retreat in Säynätsalo, famous for its wooden saunas and traditional Midsummer (Juhannus) celebrations.",
   },
 
   {
@@ -1107,7 +1107,7 @@ export const places = [
       "A curated layer for murals and street art spots that reveal the hidden, changing surface of the city.",
     shortImpact: "Hidden contemporary layer",
     features: { busAccess: true, paidEntry: false, accessible: true },
-    coordinates: [62.2425, 25.7485],
+    coordinates: [62.2415, 25.7505],
     indicators: createIndicators(4, 4, 4),
     impactSignals: [
       "Shows informal urban culture",
@@ -1143,5 +1143,83 @@ export const places = [
     liveEvents: ["Bloom season — late spring / early summer"],
     story:
       "For a short period each year, the park transforms into a dense field of color and texture, reminding that the city is not static, but constantly changing with seasons.",
+  },
+  {
+    id: 44,
+    title: "Kanavuori Bunker (Luolasto)",
+    category: "Contemporary City",
+    type: "hidden-industrial",
+    priority: 5,
+    tags: ["underground", "military", "hidden", "industrial"],
+    touristWeight: 5,
+    localValue: 4,
+    dna: 4.7,
+    image: "/images/kanavuori.jpg",
+    description:
+      "A massive underground bunker carved into solid rock, once used for military engine maintenance and storage.",
+    shortImpact: "Hidden underground infrastructure",
+    features: { busAccess: false, paidEntry: false, accessible: false },
+    coordinates: [62.2415, 25.8755],
+    indicators: createIndicators(4, 3, 5),
+    impactSignals: [
+      "Hidden military-industrial history",
+      "Rare underground architecture",
+      "Unseen layer of the city",
+    ],
+    liveEvents: [],
+    story:
+      "Kanavuori reveals a hidden dimension of the city — a place where infrastructure disappears into rock, and history is stored beneath the surface. (NO PUBLIC ACCESS)",
+  },
+  {
+    id: 45,
+    title: "Naissaari (Vaajakoski)",
+    category: "Nature–Cultural Gems",
+    type: "industrial-landscape",
+    priority: 5,
+    tags: ["water", "industrial heritage", "photospot"],
+    touristWeight: 5,
+    localValue: 4,
+    dna: 4.6,
+    image: "/images/naissaari.jpg",
+    description:
+      "A small island between old canal locks, where industrial history meets flowing water and red-brick architecture.",
+    shortImpact: "Industrial + nature fusion",
+    features: { busAccess: true, paidEntry: false, accessible: true },
+    coordinates: [62.2465, 25.8655],
+    indicators: createIndicators(4, 4, 5),
+    impactSignals: [
+      "Historic hydro-industrial site",
+      "Strong visual contrast (water + brick)",
+      "Photogenic and atmospheric",
+    ],
+    liveEvents: ["Local exhibitions and café visits"],
+    story:
+      "Naissaari is where water, energy, and industry shaped the city — a place where movement and structure coexist.",
+  },
+  {
+    id: 46,
+    title: "Panda Factory & Outlet (Vaajakoski)",
+    category: "Contemporary City",
+    type: "food-industry",
+    priority: 4,
+    tags: ["food culture", "Finnish brands", "factory"],
+    touristWeight: 4,
+    localValue: 5,
+    dna: 4.3,
+    image: "/images/panda.jpg",
+    description:
+      "A well-known Finnish confectionery factory representing local sweet traditions, especially licorice culture.",
+    shortImpact: "Finnish confectionery culture",
+    features: { busAccess: true, paidEntry: false, accessible: true },
+    coordinates: [62.2435, 25.8458],
+    indicators: createIndicators(3, 5, 4),
+    impactSignals: [
+      "Part of Finnish food identity",
+      "Strong local brand recognition",
+      "Connection to everyday culture",
+    ],
+    liveEvents: [],
+    story:
+      "Panda reflects a different layer of the city — not architecture or nature, but taste, memory, and everyday culture shaped through Finnish confectionery traditions.",
   },
 ];
