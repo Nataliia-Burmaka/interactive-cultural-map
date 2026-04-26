@@ -3165,3 +3165,8 @@ button {
     display: none;
   }
 }
+.map-active-filters {
+  margin-top: 6px;
+  font-size: 13px;
+  color: #6b7280;
+}

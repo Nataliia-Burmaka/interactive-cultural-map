@@ -1222,4 +1222,30 @@ export const places = [
     story:
       "Panda reflects a different layer of the city — not architecture or nature, but taste, memory, and everyday culture shaped through Finnish confectionery traditions.",
   },
+  {
+    id: 45,
+    title: "Kuokkala Manor (heritage & vintage collection)",
+    category: "Contemporary City",
+    type: "hybrid-heritage",
+    priority: 3,
+    tags: ["manor", "vintage", "cars", "hidden"],
+    touristWeight: 3,
+    localValue: 4,
+    dna: 4.1,
+    image: "/images/kuokkala-manor.jpg",
+    description:
+      "A historic manor house combined with a private collection of vintage cars and machinery, blending heritage with personal curation.",
+    shortImpact: "Unexpected heritage mix",
+    features: { busAccess: true, paidEntry: true, accessible: true },
+    coordinates: [62.2315, 25.7725],
+    indicators: createIndicators(3, 4, 4),
+    impactSignals: [
+      "Combination of historical architecture and private collection",
+      "Example of cultural reuse of space",
+      "Less obvious, discovery-oriented location",
+    ],
+    liveEvents: [],
+    story:
+      "Kuokkala Manor reflects a different layer of the city — where personal passion, history, and objects come together in an unexpected way.",
+  },
 ];

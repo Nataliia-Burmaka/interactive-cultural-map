@@ -185,6 +185,14 @@ function MapPage() {
       .sort((a, b) => a.distanceMeters - b.distanceMeters);
   }, [userPosition]);
 
+  const filteredPlaces = useMemo(() => {
+    if (selectedCategories.length === 0) return placesWithDistance;
+
+    return placesWithDistance.filter((place) =>
+      selectedCategories.includes(place.category),
+    );
+  }, [placesWithDistance, selectedCategories]);
+
   const savedPlacesNearby = useMemo(() => {
     return places
       .filter((place) => savedIds.includes(place.id))
@@ -377,6 +385,11 @@ function MapPage() {
           <p className="map-subtitle">
             Discover places with cultural impact around you
           </p>
+          {selectedCategories.length > 0 && (
+            <p className="map-active-filters">
+              🧭 Showing: {selectedCategories.join(" + ")}
+            </p>
+          )}
 
           {locationStatus === "loading" && (
             <p className="location-note">Getting your location…</p>
@@ -408,7 +421,7 @@ function MapPage() {
               url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
             />
 
-            {placesWithDistance.map((place) => {
+            {filteredPlaces.map((place) => {
               const isActive = place.id === selectedPlaceId;
 
               return (
