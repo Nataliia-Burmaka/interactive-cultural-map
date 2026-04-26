@@ -30,7 +30,7 @@ export const places = [
       "A key cultural landmark that reveals why Jyväskylä is deeply connected to Alvar Aalto’s legacy.",
     shortImpact: "Key Aalto landmark",
     features: { busAccess: true, paidEntry: true, accessible: true },
-    coordinates: [62.23345883590716, 25.731545018401555],
+    coordinates: [62.2335, 25.7314],
     indicators: createIndicators(5, 4, 5),
     impactSignals: [
       "Strong connection to Alvar Aalto’s legacy",
@@ -41,7 +41,6 @@ export const places = [
     story:
       "Alvar Aalto Museum helps explain why Jyväskylä is a city shaped by architectural thinking. Look at the light hitting those tiles—Alvar designed this as his personal love letter to the city's soul",
   },
-
   {
     id: 2,
     title: "Museum of Central Finland",
@@ -57,7 +56,7 @@ export const places = [
       "A regional museum where architecture, memory, and Central Finnish identity meet.",
     shortImpact: "Regional memory landmark",
     features: { busAccess: true, paidEntry: true, accessible: true },
-    coordinates: [62.23406861535372, 25.730793999894786],
+    coordinates: [62.2341, 25.7308],
     indicators: createIndicators(5, 4, 4),
     impactSignals: [
       "Preserves regional cultural memory",
@@ -68,7 +67,6 @@ export const places = [
     story:
       "The museum gives depth to Jyväskylä’s identity by connecting the city to the wider story of Central Finland.",
   },
-
   {
     id: 3,
     title: "University Main Building",
@@ -84,7 +82,7 @@ export const places = [
       "A central architectural point of the Seminaarinmäki campus and Jyväskylä’s identity as a city of education.",
     shortImpact: "Aalto academic landmark",
     features: { busAccess: true, paidEntry: false, accessible: true },
-    coordinates: [62.23632269305628, 25.732317494628177],
+    coordinates: [62.2361, 25.7328],
     indicators: createIndicators(5, 5, 4),
     impactSignals: [
       "Strong academic identity",
@@ -95,7 +93,6 @@ export const places = [
     story:
       "The University Main Building shows how education became part of Jyväskylä’s urban and cultural character.",
   },
-
   {
     id: 4,
     title: "Main Library by Aalto",
@@ -111,7 +108,7 @@ export const places = [
       "A library landmark connected to Jyväskylä’s educational tradition and Aalto’s human-centered architecture.",
     shortImpact: "Learning and architecture",
     features: { busAccess: true, paidEntry: false, accessible: true },
-    coordinates: [62.23863157361981, 25.742703007851823],
+    coordinates: [62.2388, 25.7383],
     indicators: createIndicators(4, 5, 4),
     impactSignals: [
       "Supports Jyväskylä’s identity as a city of learning",
@@ -122,7 +119,6 @@ export const places = [
     story:
       "This place connects architecture with everyday knowledge, making learning visible as part of city life.",
   },
-
   {
     id: 5,
     title: "Säynätsalo Town Hall",
@@ -138,7 +134,7 @@ export const places = [
       "One of Alvar Aalto’s most important works, where civic life and modern architecture meet.",
     shortImpact: "World-class Aalto site",
     features: { busAccess: true, paidEntry: false, accessible: false },
-    coordinates: [62.14029136448821, 25.769362446969268],
+    coordinates: [62.1403, 25.7694],
     indicators: createIndicators(5, 3, 5),
     impactSignals: [
       "International architectural significance",
@@ -149,7 +145,6 @@ export const places = [
     story:
       "Säynätsalo Town Hall is not only a building, but a complete atmosphere of civic dignity, material warmth, and architectural intelligence.",
   },
-
   {
     id: 6,
     title: "Muuratsalo Experimental House",
@@ -165,7 +160,7 @@ export const places = [
       "Aalto’s experimental summer house, where architecture becomes a laboratory of materials, landscape, and ideas.",
     shortImpact: "Aalto’s architectural laboratory",
     features: { busAccess: false, paidEntry: true, accessible: false },
-    coordinates: [62.11517686922387, 25.748276536594304],
+    coordinates: [62.1152, 25.7483],
     indicators: createIndicators(5, 3, 5),
     impactSignals: [
       "Experimental architectural heritage",
@@ -176,7 +171,6 @@ export const places = [
     story:
       "Muuratsalo Experimental House feels like a private conversation between architecture, forest, brick, and lake.",
   },
-
   {
     id: 7,
     title: "Kuokkala Church",
@@ -192,7 +186,7 @@ export const places = [
       "A contemporary wooden church that brings together sacred space, modern design, and local community life.",
     shortImpact: "Contemporary sacred architecture",
     features: { busAccess: true, paidEntry: false, accessible: true },
-    coordinates: [62.22741234042387, 25.77196272091794],
+    coordinates: [62.2274, 25.772],
     indicators: createIndicators(4, 4, 5),
     impactSignals: [
       "Strong contemporary architectural presence",
@@ -203,7 +197,6 @@ export const places = [
     story:
       "Kuokkala Church shows that Jyväskylä’s architectural identity did not end with Aalto; it continues in new forms.",
   },
-
   {
     id: 8,
     title: "Old Police Station Building",
@@ -219,7 +212,7 @@ export const places = [
       "A lesser-known Aalto-related urban landmark that adds another layer to the city’s architectural map.",
     shortImpact: "Hidden Aalto layer",
     features: { busAccess: true, paidEntry: false, accessible: false },
-    coordinates: [62.2416, 25.7472],
+    coordinates: [62.2415, 25.7472],
     indicators: createIndicators(4, 3, 4),
     impactSignals: [
       "Adds depth to Aalto heritage",
@@ -230,7 +223,6 @@ export const places = [
     story:
       "This building works as a quieter architectural signal, showing how modernism is woven into the city’s everyday fabric.",
   },
-
   {
     id: 9,
     title: "Jyväskylä City Hall",
@@ -246,7 +238,7 @@ export const places = [
       "A civic landmark that anchors the administrative and public identity of the city center.",
     shortImpact: "Civic identity landmark",
     features: { busAccess: true, paidEntry: false, accessible: true },
-    coordinates: [62.23957372993818, 25.745549273723253],
+    coordinates: [62.2396, 25.7455],
     indicators: createIndicators(4, 5, 3),
     impactSignals: [
       "Represents city governance",
@@ -257,7 +249,6 @@ export const places = [
     story:
       "While the world rushes by, this neo-renaissance gem stands still, guarding the city’s secrets since 1899—check the window details, they don't craft them like that anymore.",
   },
-
   {
     id: 10,
     title: "Harju Ridge",
@@ -273,7 +264,7 @@ export const places = [
       "A forested ridge in the heart of the city, offering views, memory, and a strong sense of Jyväskylä’s landscape identity.",
     shortImpact: "Nature and identity landmark",
     features: { busAccess: true, paidEntry: false, accessible: false },
-    coordinates: [62.242682916843584, 25.73731778405006],
+    coordinates: [62.2427, 25.7373],
     indicators: createIndicators(4, 5, 5),
     impactSignals: [
       "Central natural landmark",
@@ -284,7 +275,6 @@ export const places = [
     story:
       "Harju is where the natural form of the city rises into view and becomes part of its emotional identity.",
   },
-
   {
     id: 11,
     title: "Vesilinna Tower",
@@ -300,7 +290,7 @@ export const places = [
       "A tower on Harju that turns the ridge into a lookout point over the city and lakes.",
     shortImpact: "City viewpoint",
     features: { busAccess: true, paidEntry: false, accessible: false },
-    coordinates: [62.243020607361444, 25.739537253245192],
+    coordinates: [62.243, 25.7395],
     indicators: createIndicators(4, 4, 5),
     impactSignals: [
       "Strong visual orientation point",
@@ -311,7 +301,6 @@ export const places = [
     story:
       "Vesilinna lets visitors understand Jyväskylä from above: lakes, hills, streets, and cultural landmarks become one system.",
   },
-
   {
     id: 12,
     title: "Tourujoki Nature Trail",
@@ -327,7 +316,7 @@ export const places = [
       "An urban nature trail where river landscape and city life meet surprisingly close to the center.",
     shortImpact: "Urban river nature",
     features: { busAccess: true, paidEntry: false, accessible: false },
-    coordinates: [62.248669995575014, 25.753077483265617],
+    coordinates: [62.2487, 25.7531],
     indicators: createIndicators(4, 5, 4),
     impactSignals: [
       "Accessible urban nature experience",
@@ -338,7 +327,6 @@ export const places = [
     story:
       "It’s a glitch in the city map—one minute you’re between concrete buildings, and the next, you’re in a lush, humid rainforest canyon where the river whispers secrets to the ancient ferns.",
   },
-
   {
     id: 13,
     title: "Tuomiojärvi Lake Area",
@@ -354,7 +342,7 @@ export const places = [
       "A lake area connected to swimming, walking, everyday recreation, and the open feeling of Jyväskylä.",
     shortImpact: "Local lake life",
     features: { busAccess: true, paidEntry: false, accessible: true },
-    coordinates: [62.25415090579853, 25.74565298538241],
+    coordinates: [62.2542, 25.7457],
     indicators: createIndicators(4, 5, 4),
     impactSignals: [
       "Strong everyday local value",
@@ -365,7 +353,6 @@ export const places = [
     story:
       "Tuomiojärvi gives visitors access to one of the simplest Finnish experiences: being near water without leaving the city.",
   },
-
   {
     id: 14,
     title: "Laajavuori Nature Trail",
@@ -381,7 +368,7 @@ export const places = [
       "A symbolic entry point into the Finnish forest experience, combining nature, movement, and quiet reflection.",
     shortImpact: "Forest experience gateway",
     features: { busAccess: true, paidEntry: false, accessible: true },
-    coordinates: [62.25889058136325, 25.674525798723966],
+    coordinates: [62.2589, 25.6745],
     indicators: createIndicators(4, 4, 5),
     impactSignals: [
       "Direct access to Finnish forest culture",
@@ -392,7 +379,6 @@ export const places = [
     story:
       "Laajavuori is where the city dissolves into forest, and everyday life reconnects with something slower and deeper.",
   },
-
   {
     id: 15,
     title: "Jyväsjärvi Lakeside Route",
@@ -408,7 +394,7 @@ export const places = [
       "A lakeside route that connects walking, cycling, water views, and contemporary urban life.",
     shortImpact: "Everyday lake-city route",
     features: { busAccess: true, paidEntry: false, accessible: true },
-    coordinates: [62.2298603652506, 25.732023380654596],
+    coordinates: [62.2299, 25.732],
     indicators: createIndicators(4, 5, 4),
     impactSignals: [
       "Connects nature with mobility",
@@ -419,7 +405,6 @@ export const places = [
     story:
       "The Jyväsjärvi route turns the lake into an active part of the city, not just a view.",
   },
-
   {
     id: 16,
     title: "Viitaniemi Park Area",
@@ -435,7 +420,7 @@ export const places = [
       "A calm park and lake area that reflects everyday Finnish outdoor life.",
     shortImpact: "Quiet local nature",
     features: { busAccess: true, paidEntry: false, accessible: true },
-    coordinates: [62.25475347563362, 25.728822865084926],
+    coordinates: [62.2548, 25.7288],
     indicators: createIndicators(3, 5, 4),
     impactSignals: [
       "Everyday local recreation",
@@ -446,7 +431,6 @@ export const places = [
     story:
       "Viitaniemi is not a dramatic landmark, but it gives visitors something valuable: the quiet rhythm of local life.",
   },
-
   {
     id: 17,
     title: "Lutakko Harbour Area",
@@ -462,7 +446,7 @@ export const places = [
       "A lakeside harbour area where water, events, and contemporary urban life meet.",
     shortImpact: "Lake and city edge",
     features: { busAccess: true, paidEntry: false, accessible: true },
-    coordinates: [62.23631735398898, 25.75777185607191],
+    coordinates: [62.2363, 25.7578],
     indicators: createIndicators(4, 5, 4),
     impactSignals: [
       "Strong lake-city connection",
@@ -473,7 +457,6 @@ export const places = [
     story:
       "Lutakko harbour makes the lake feel like part of the city’s social and cultural life.",
   },
-
   {
     id: 18,
     title: "Hippos Sports Hub",
@@ -489,7 +472,7 @@ export const places = [
       "A sports hub that connects training, community life, sports science, and Jyväskylä’s identity as a sports city.",
     shortImpact: "Sports innovation ecosystem",
     features: { busAccess: true, paidEntry: false, accessible: true },
-    coordinates: [62.236613866174764, 25.719449030335394],
+    coordinates: [62.2366, 25.7194],
     indicators: createIndicators(5, 5, 4),
     impactSignals: [
       "Strong local sports identity",
@@ -500,7 +483,6 @@ export const places = [
     story:
       "Hippos is one of the places where Jyväskylä’s sports culture becomes visible in everyday life.",
   },
-
   {
     id: 19,
     title: "Faculty of Sport and Health Sciences",
@@ -516,7 +498,7 @@ export const places = [
       "A rare academic center that makes sport part of Jyväskylä’s scientific and cultural identity.",
     shortImpact: "Sports science landmark",
     features: { busAccess: true, paidEntry: false, accessible: true },
-    coordinates: [62.23450844861933, 25.728809165222778],
+    coordinates: [62.2345, 25.7288],
     indicators: createIndicators(5, 5, 4),
     impactSignals: [
       "Unique sports science profile",
@@ -527,7 +509,6 @@ export const places = [
     story:
       "Here, sport is not only performance. It is science, education, public health, and part of the city’s knowledge culture.",
   },
-
   {
     id: 20,
     title: "Harju Stadium",
@@ -543,7 +524,7 @@ export const places = [
       "A stadium close to the city center, strongly connected to local sports events and community life.",
     shortImpact: "Central sports venue",
     features: { busAccess: true, paidEntry: false, accessible: true },
-    coordinates: [62.24491509388729, 25.74102512813527],
+    coordinates: [62.2449, 25.741],
     indicators: createIndicators(4, 5, 4),
     impactSignals: [
       "Central sports identity",
@@ -554,7 +535,6 @@ export const places = [
     story:
       "Harju Stadium adds movement and collective energy to the city center landscape.",
   },
-
   {
     id: 21,
     title: "Laajavuori Ski Center",
@@ -570,7 +550,7 @@ export const places = [
       "A winter sports area that connects Jyväskylä to skiing, outdoor activity, and seasonal recreation.",
     shortImpact: "Winter sports landmark",
     features: { busAccess: true, paidEntry: true, accessible: false },
-    coordinates: [62.25895137956411, 25.693275980953363],
+    coordinates: [62.259, 25.6933],
     indicators: createIndicators(4, 5, 5),
     impactSignals: [
       "Strong winter sports identity",
@@ -596,7 +576,7 @@ export const places = [
       "A landmark ski jumping hill associated with Finland’s Olympic legacy and one of its most iconic athletes.",
     shortImpact: "Olympic ski legacy",
     features: { busAccess: true, paidEntry: false, accessible: false },
-    coordinates: [62.2590753598315, 25.683441461520015],
+    coordinates: [62.2591, 25.6834],
     indicators: createIndicators(5, 3, 4),
     impactSignals: [
       "Strong Olympic and national sports identity",
@@ -607,7 +587,6 @@ export const places = [
     story:
       "More than a sports structure, this hill carries the memory of Finnish excellence and the emotional weight of national victories.",
   },
-
   {
     id: 23,
     title: "AaltoAlvari Swimming Hall",
@@ -623,7 +602,7 @@ export const places = [
       "A swimming hall that connects everyday wellbeing, public sport, and Aalto’s architectural layer.",
     shortImpact: "Sport and architecture",
     features: { busAccess: true, paidEntry: true, accessible: true },
-    coordinates: [62.23639266172926, 25.728186892780542],
+    coordinates: [62.2364, 25.7282],
     indicators: createIndicators(4, 5, 4),
     impactSignals: [
       "Public wellbeing infrastructure",
@@ -634,7 +613,6 @@ export const places = [
     story:
       "AaltoAlvari shows how sport in Jyväskylä is not only elite performance, but also everyday health and public access.",
   },
-
   {
     id: 24,
     title: "Jyväskylä Ice Arena",
@@ -650,7 +628,7 @@ export const places = [
       "An important indoor sports venue connected to local ice hockey culture and winter sport identity.",
     shortImpact: "Local ice sport venue",
     features: { busAccess: true, paidEntry: true, accessible: true },
-    coordinates: [62.23775712209707, 25.72225043355649],
+    coordinates: [62.2378, 25.7223],
     indicators: createIndicators(4, 5, 3),
     impactSignals: [
       "Supports local winter sports culture",
@@ -661,7 +639,6 @@ export const places = [
     story:
       "The ice arena adds another seasonal layer to Jyväskylä’s sports capital identity: cold, speed, teams, and local loyalty.",
   },
-
   {
     id: 25,
     title: "Rally Finland Routes",
@@ -677,7 +654,7 @@ export const places = [
       "A conceptual point for Rally Finland, one of the strongest sports-event identities connected to Jyväskylä.",
     shortImpact: "Legendary rally identity",
     features: { busAccess: false, paidEntry: false, accessible: false },
-    coordinates: [62.24491509388729, 25.74102512813527],
+    coordinates: [62.2407, 25.7505], // Moved to Paviljonki area where the HQ/Service Park usually is
     indicators: createIndicators(5, 4, 5),
     impactSignals: [
       "International event recognition",
@@ -688,7 +665,6 @@ export const places = [
     story:
       "Rally Finland is not one single place. It is a moving cultural event that turns roads, forests, sound, speed, and spectatorship into Jyväskylä’s wider identity.",
   },
-
   {
     id: 26,
     title: "Toivola Old Courtyard",
@@ -704,7 +680,7 @@ export const places = [
       "A preserved 19th-century courtyard that captures the feeling of everyday life from another time.",
     shortImpact: "Living historical courtyard",
     features: { busAccess: true, paidEntry: false, accessible: false },
-    coordinates: [62.23766034874523, 25.74465178202896],
+    coordinates: [62.2377, 25.7447],
     indicators: createIndicators(5, 4, 4),
     impactSignals: [
       "Authentic preserved wooden architecture",
@@ -715,7 +691,6 @@ export const places = [
     story:
       "Toivola is not a museum piece, but a lived fragment of history — a place where time feels layered rather than past.",
   },
-
   {
     id: 27,
     title: "Craft Museum of Finland",
@@ -731,7 +706,7 @@ export const places = [
       "A museum dedicated to Finnish craft, handmade culture, and the continuity of material traditions.",
     shortImpact: "National craft heritage",
     features: { busAccess: true, paidEntry: true, accessible: true },
-    coordinates: [62.24177120226191, 25.745159414547437],
+    coordinates: [62.2418, 25.7452],
     indicators: createIndicators(5, 5, 4),
     impactSignals: [
       "Preserves Finnish craft traditions",
@@ -742,7 +717,6 @@ export const places = [
     story:
       "The Craft Museum makes tradition tangible: hands, tools, textures, materials, and knowledge become part of the city’s cultural identity.",
   },
-
   {
     id: 28,
     title: "Nikolainkulma",
@@ -758,7 +732,7 @@ export const places = [
       "A historic wooden corner building in the city center, connected to old hotel, restaurant, and café culture.",
     shortImpact: "Historic social meeting place",
     features: { busAccess: true, paidEntry: false, accessible: true },
-    coordinates: [62.241917775843746, 25.749748340965624],
+    coordinates: [62.2419, 25.7497],
     indicators: createIndicators(4, 5, 4),
     impactSignals: [
       "One of the few old wooden buildings preserved in the center",
@@ -784,7 +758,7 @@ export const places = [
       "A central park around the city church, carrying layers of memory, daily movement, and quiet public life.",
     shortImpact: "Historic city-center memory",
     features: { busAccess: true, paidEntry: false, accessible: true },
-    coordinates: [62.2408630056996, 25.745171488166218],
+    coordinates: [62.2409, 25.7452],
     indicators: createIndicators(4, 5, 4),
     impactSignals: [
       "Historic public space",
@@ -795,7 +769,6 @@ export const places = [
     story:
       "Kirkkopuisto is a calm center inside the city center: a place where public life slows down around memory and trees.",
   },
-
   {
     id: 30,
     title: "Nisula Wooden Houses",
@@ -822,7 +795,6 @@ export const places = [
     story:
       "Nisula offers a softer kind of discovery: not a monument, but the texture of ordinary homes and older urban life.",
   },
-
   {
     id: 31,
     title: "Artist’s House",
@@ -838,7 +810,7 @@ export const places = [
       "A local artist-oriented cultural point that represents creative work as part of everyday city life.",
     shortImpact: "Local creative community",
     features: { busAccess: true, paidEntry: false, accessible: false },
-    coordinates: [62.236567080574275, 25.73576240841416],
+    coordinates: [62.236567, 25.735762],
     indicators: createIndicators(4, 5, 3),
     impactSignals: [
       "Supports local creative identity",
@@ -865,7 +837,7 @@ export const places = [
       "A conceptual point for sauna as a living Finnish tradition connected to wellbeing, community, water, and silence.",
     shortImpact: "Finnish living tradition",
     features: { busAccess: true, paidEntry: true, accessible: false },
-    coordinates: [62.2398, 25.7586],
+    coordinates: [62.2415, 25.7592],
     indicators: createIndicators(5, 5, 5),
     impactSignals: [
       "Core Finnish cultural practice",
@@ -892,7 +864,7 @@ export const places = [
       "A local tea house with a distinctive atmosphere that adds a small, human-scale layer to the city experience.",
     shortImpact: "Local charm and atmosphere",
     features: { busAccess: true, paidEntry: true, accessible: false },
-    coordinates: [62.24319548299057, 25.76067622908995],
+    coordinates: [62.24602, 25.75712],
     indicators: createIndicators(3, 4, 4),
     impactSignals: [
       "Distinctive local atmosphere",
@@ -919,7 +891,7 @@ export const places = [
       "A contemporary art space connected to exhibitions, printmaking, and the city’s current creative scene.",
     shortImpact: "Contemporary art signal",
     features: { busAccess: true, paidEntry: false, accessible: true },
-    coordinates: [62.24462319477059, 25.75800815812461],
+    coordinates: [62.244623, 25.758008],
     indicators: createIndicators(4, 5, 4),
     impactSignals: [
       "Active contemporary art presence",
@@ -946,7 +918,7 @@ export const places = [
       "A university building that represents research, digital culture, and Jyväskylä’s knowledge-based contemporary identity.",
     shortImpact: "Knowledge and innovation",
     features: { busAccess: true, paidEntry: false, accessible: true },
-    coordinates: [62.232278562239095, 25.736940515328243],
+    coordinates: [62.232278, 25.73694],
     indicators: createIndicators(4, 5, 4),
     impactSignals: [
       "Research and innovation environment",
@@ -973,7 +945,7 @@ export const places = [
       "A major event and congress venue that brings conferences, fairs, and public gatherings into the city’s contemporary life.",
     shortImpact: "Event city infrastructure",
     features: { busAccess: true, paidEntry: true, accessible: true },
-    coordinates: [62.23962053142463, 25.75828963611278],
+    coordinates: [62.23962, 25.758289],
     indicators: createIndicators(4, 4, 4),
     impactSignals: [
       "Major public event venue",
@@ -1000,7 +972,7 @@ export const places = [
       "A contemporary knowledge space that reflects student life, public learning, and the city’s academic atmosphere.",
     shortImpact: "Contemporary learning space",
     features: { busAccess: true, paidEntry: false, accessible: true },
-    coordinates: [62.23789062768634, 25.73617995036485],
+    coordinates: [62.23789, 25.736179],
     indicators: createIndicators(4, 5, 4),
     impactSignals: [
       "Supports the city’s learning identity",
@@ -1027,7 +999,7 @@ export const places = [
       "A lively lakeside district where events, post-industrial identity, housing, and contemporary urban culture meet.",
     shortImpact: "Contemporary urban district",
     features: { busAccess: true, paidEntry: false, accessible: true },
-    coordinates: [62.24319548299057, 25.76067622908995],
+    coordinates: [62.239, 25.755],
     indicators: createIndicators(4, 5, 5),
     impactSignals: [
       "Represents modern city transformation",
@@ -1054,7 +1026,7 @@ export const places = [
       "A city art museum that connects exhibitions, visual culture, and Jyväskylä’s contemporary cultural life.",
     shortImpact: "Visual art institution",
     features: { busAccess: true, paidEntry: false, accessible: true },
-    coordinates: [62.24133493748715, 25.74437599013502],
+    coordinates: [62.241334, 25.744375],
     indicators: createIndicators(4, 5, 4),
     impactSignals: [
       "Active visual art institution",
@@ -1081,7 +1053,7 @@ export const places = [
       "A former industrial site transformed into a creative urban district with culture, design, and contemporary city life.",
     shortImpact: "Industrial-to-creative transformation",
     features: { busAccess: true, paidEntry: false, accessible: true },
-    coordinates: [62.251621337816246, 25.756737523404432],
+    coordinates: [62.251621, 25.756737],
     indicators: createIndicators(4, 5, 4),
     impactSignals: [
       "Adaptive reuse of industrial heritage",
@@ -1108,7 +1080,7 @@ export const places = [
       "A campus area that works as a wider system of learning, architecture, student life, and Jyväskylä’s knowledge identity.",
     shortImpact: "Knowledge-city ecosystem",
     features: { busAccess: true, paidEntry: false, accessible: true },
-    coordinates: [62.23701673804581, 25.73328182645105],
+    coordinates: [62.237016, 25.733281],
     indicators: createIndicators(5, 5, 5),
     impactSignals: [
       "Core educational identity",
@@ -1135,7 +1107,7 @@ export const places = [
       "A curated layer for murals and street art spots that reveal the hidden, changing surface of the city.",
     shortImpact: "Hidden contemporary layer",
     features: { busAccess: true, paidEntry: false, accessible: true },
-    coordinates: [62.2402, 25.7568],
+    coordinates: [62.2425, 25.7485],
     indicators: createIndicators(4, 4, 4),
     impactSignals: [
       "Shows informal urban culture",
@@ -1161,7 +1133,7 @@ export const places = [
       "A seasonal flower park known for its rhododendron bloom, turning part of the city into a vivid and atmospheric landscape.",
     shortImpact: "Seasonal visual highlight",
     features: { busAccess: true, paidEntry: false, accessible: true },
-    coordinates: [62.2346511333691, 25.670299390346948],
+    coordinates: [62.234651, 25.670299],
     indicators: createIndicators(4, 4, 5),
     impactSignals: [
       "Strong seasonal visual impact",

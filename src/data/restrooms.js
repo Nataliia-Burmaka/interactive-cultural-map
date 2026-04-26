@@ -5,7 +5,7 @@ export const restrooms = [
     type: "Free",
     accessible: true,
     description: "Free public restroom inside Sokos.",
-    coordinates: [62.24193310410699, 25.747598954655384],
+    coordinates: [62.2418, 25.7465],
   },
   {
     id: 2,
@@ -13,7 +13,7 @@ export const restrooms = [
     type: "Free",
     accessible: true,
     description: "Free restroom in Matara cultural building.",
-    coordinates: [62.248083593374936, 25.75925283936635],
+    coordinates: [62.2481, 25.7593],
   },
   {
     id: 3,
@@ -21,7 +21,7 @@ export const restrooms = [
     type: "Free",
     accessible: true,
     description: "Public restroom at the base of the tower.",
-    coordinates: [62.243020607361444, 25.739537253245192],
+    coordinates: [62.243, 25.7395],
   },
   {
     id: 4,
@@ -29,7 +29,7 @@ export const restrooms = [
     type: "Free",
     accessible: true,
     description: "Restroom inside cultural venue Villa Rana.",
-    coordinates: [62.23660421398304, 25.735047478910445],
+    coordinates: [62.2363, 25.7351],
   },
   {
     id: 5,
@@ -37,7 +37,7 @@ export const restrooms = [
     type: "Free",
     accessible: true,
     description: "University building with accessible restroom.",
-    coordinates: [62.232278562239095, 25.736940515328243],
+    coordinates: [62.2323, 25.7369],
   },
   {
     id: 6,
@@ -45,7 +45,7 @@ export const restrooms = [
     type: "Paid",
     accessible: true,
     description: "Paid public restroom near train station.",
-    coordinates: [62.242014649617396, 25.75453913717973],
+    coordinates: [62.2418, 25.7544],
   },
   {
     id: 7,
@@ -53,7 +53,7 @@ export const restrooms = [
     type: "Free",
     accessible: true,
     description: "Restroom inside event center (open during events).",
-    coordinates: [62.23962053142463, 25.75828963611278],
+    coordinates: [62.2396, 25.7583],
   },
   {
     id: 8,
@@ -61,7 +61,7 @@ export const restrooms = [
     type: "Paid",
     accessible: true,
     description: "Indoor restroom in shopping center.",
-    coordinates: [62.24193310410699, 25.747598954655384],
+    coordinates: [62.2429, 25.7448],
   },
   {
     id: 9,
@@ -70,7 +70,7 @@ export const restrooms = [
     accessible: false,
     description:
       "Outdoor summer toilet near Viitaniemi beach. Usually available only during the summer season.",
-    coordinates: [62.25470924599101, 25.744156701233283],
+    coordinates: [62.2547, 25.7442],
   },
   {
     id: 10,
@@ -79,7 +79,7 @@ export const restrooms = [
     accessible: false,
     description:
       "Outdoor summer toilet near Jyväsjärvi beach area. Usually available only during the summer season.",
-    coordinates: [62.229310487957385, 25.732559822445143],
+    coordinates: [62.2346, 25.7513],
   },
   {
     id: 11,
@@ -87,7 +87,7 @@ export const restrooms = [
     type: "Free",
     accessible: true,
     description: "Free public restroom inside the main city library.",
-    coordinates: [62.23863157361981, 25.742703007851823],
+    coordinates: [62.2388, 25.7383],
   },
   {
     id: 12,
@@ -95,7 +95,7 @@ export const restrooms = [
     type: "Free",
     accessible: true,
     description: "Restroom available inside the museum during opening hours.",
-    coordinates: [62.241474694249824, 25.74438282790602],
+    coordinates: [62.2413, 25.7444],
   },
   {
     id: 13,
@@ -104,7 +104,7 @@ export const restrooms = [
     accessible: true,
     description:
       "Restroom available inside Ratamo building during opening hours.",
-    coordinates: [62.24462319477059, 25.75800815812461],
+    coordinates: [62.2446, 25.758],
   },
   {
     id: 14,
@@ -113,7 +113,7 @@ export const restrooms = [
     accessible: true,
     description:
       "Restroom available inside the museum during opening hours. Museum ticket or café access may be required.",
-    coordinates: [62.23345883590716, 25.731545018401555],
+    coordinates: [62.2335, 25.7314],
   },
   {
     id: 15,
@@ -122,7 +122,7 @@ export const restrooms = [
     accessible: true,
     description:
       "Restroom available in the ski center area during opening hours.",
-    coordinates: [62.258630890755406, 25.694846214208095],
+    coordinates: [62.2586, 25.6948],
   },
   {
     id: 16,
@@ -131,7 +131,7 @@ export const restrooms = [
     accessible: true,
     description:
       "Restroom available inside the church during opening hours and events.",
-    coordinates: [62.22741234042387, 25.77196272091794],
+    coordinates: [62.2274, 25.772],
   },
   {
     id: 17,
@@ -140,6 +140,6 @@ export const restrooms = [
     accessible: false,
     description:
       "Outdoor summer toilet near Jyväsjärvi beach area. Usually available only during the summer season.",
-    coordinates: [62.25393842889967, 25.726707274713732],
+    coordinates: [62.2539, 25.7267],
   },
 ];
