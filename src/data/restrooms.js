@@ -74,12 +74,12 @@ export const restrooms = [
   },
   {
     id: 10,
-    title: "Jyväsjärvi Beach Toilet",
+    title: "Mattilanniemi Beach Toilet",
     type: "Free / seasonal",
     accessible: false,
     description:
-      "Outdoor summer toilet near Jyväsjärvi beach area. Usually available only during the summer season.",
-    coordinates: [62.2346, 25.7513],
+      "Outdoor summer toilet  near Mattilanniemi beach area. Usually available only during the summer season.",
+    coordinates: [62.2292, 25.7325],
   },
   {
     id: 11,
