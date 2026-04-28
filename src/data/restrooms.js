@@ -79,7 +79,7 @@ export const restrooms = [
     accessible: false,
     description:
       "Outdoor summer toilet  near Mattilanniemi beach area. Usually available only during the summer season.",
-    coordinates: [62.2312, 25.7315],
+    coordinates: [62.2299, 25.732],
   },
   {
     id: 11,
