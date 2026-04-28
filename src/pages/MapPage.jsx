@@ -85,8 +85,11 @@ function createPlaceIcon(category, isActive = false) {
 }
 
 function createRestroomIcon(type) {
-  const bg = type === "Free" ? "#d1fae5" : "#fef3c7";
-  const border = type === "Free" ? "#059669" : "#d97706";
+  const isFree = type?.toLowerCase().includes("free");
+  const isPaid = type?.toLowerCase().includes("paid");
+
+  const bg = isFree ? "#d1fae5" : isPaid ? "#fef3c7" : "#f3f4f6";
+  const border = isFree ? "#059669" : isPaid ? "#d97706" : "#6b7280";
 
   return L.divIcon({
     className: "custom-restroom-icon",
@@ -138,7 +141,9 @@ function MapPage() {
   const [savedWalkAlertPlace, setSavedWalkAlertPlace] = useState(null);
   const [dismissedSavedWalkIds, setDismissedSavedWalkIds] = useState([]);
   const [savedWalkSnoozed, setSavedWalkSnoozed] = useState(false);
+
   const [selectedCategories, setSelectedCategories] = useState([]);
+  const [viewMode, setViewMode] = useState("all");
 
   useEffect(() => {
     if (!navigator.geolocation) {
@@ -158,22 +163,26 @@ function MapPage() {
         enableHighAccuracy: true,
         timeout: 10000,
         maximumAge: 60000,
-      },
+      }
     );
   }, []);
 
   useEffect(() => {
     const savedWalk = JSON.parse(
-      localStorage.getItem("savedWalkMode") || "false",
+      localStorage.getItem("savedWalkMode") || "false"
     );
     const savedPlaces = JSON.parse(localStorage.getItem("savedPlaces") || "[]");
     const storedCategories = JSON.parse(
-      localStorage.getItem("selectedCategories") || "[]",
+      localStorage.getItem("selectedCategories") || "[]"
     );
 
     setSavedWalkMode(savedWalk);
     setSavedIds(savedPlaces);
     setSelectedCategories(storedCategories);
+
+    if (savedWalk) {
+      setViewMode("saved");
+    }
   }, []);
 
   const placesWithDistance = useMemo(() => {
@@ -186,30 +195,39 @@ function MapPage() {
   }, [userPosition]);
 
   const filteredPlaces = useMemo(() => {
-    if (selectedCategories.length === 0) return placesWithDistance;
+    if (viewMode === "all") return placesWithDistance;
 
-    return placesWithDistance.filter((place) =>
-      selectedCategories.includes(place.category),
-    );
-  }, [placesWithDistance, selectedCategories]);
+    if (viewMode === "interests") {
+      if (selectedCategories.length === 0) return placesWithDistance;
 
-  const savedPlacesNearby = useMemo(() => {
-    return places
-      .filter((place) => savedIds.includes(place.id))
-      .map((place) => ({
-        ...place,
-        distanceMeters: getDistanceMeters(userPosition, place.coordinates),
-      }))
-      .sort((a, b) => a.distanceMeters - b.distanceMeters);
-  }, [savedIds, userPosition]);
+      return placesWithDistance.filter((place) =>
+        selectedCategories.includes(place.category)
+      );
+    }
 
-  const nearestPlace = placesWithDistance[0] || null;
+    if (viewMode === "saved") {
+      return placesWithDistance.filter((place) => savedIds.includes(place.id));
+    }
+
+    return placesWithDistance;
+  }, [placesWithDistance, selectedCategories, viewMode, savedIds]);
+
+  const nearestPlace = useMemo(() => {
+    if (!filteredPlaces.length) return null;
+    return filteredPlaces[0];
+  }, [filteredPlaces]);
 
   const selectedPlace = useMemo(() => {
     return (
       placesWithDistance.find((place) => place.id === selectedPlaceId) || null
     );
   }, [placesWithDistance, selectedPlaceId]);
+
+  const savedPlacesNearby = useMemo(() => {
+    return placesWithDistance
+      .filter((place) => savedIds.includes(place.id))
+      .sort((a, b) => a.distanceMeters - b.distanceMeters);
+  }, [placesWithDistance, savedIds]);
 
   const restroomsWithDistance = useMemo(() => {
     return restrooms
@@ -223,7 +241,7 @@ function MapPage() {
   const selectedRestroom = useMemo(() => {
     return (
       restroomsWithDistance.find(
-        (restroom) => restroom.id === selectedRestroomId,
+        (restroom) => restroom.id === selectedRestroomId
       ) || null
     );
   }, [restroomsWithDistance, selectedRestroomId]);
@@ -236,24 +254,24 @@ function MapPage() {
         ...place,
         nearbyDistance: getDistanceMeters(
           selectedRestroom.coordinates,
-          place.coordinates,
+          place.coordinates
         ),
       }))
       .sort((a, b) => a.nearbyDistance - b.nearbyDistance)
       .slice(0, 2);
   }, [selectedRestroom]);
 
-  const isSoftMode = selectedCategories.length === 0;
-
+ const isSoftMode = viewMode === "all";
+ 
   const showNearbyAlert =
-    nearestPlace &&
+    nearestPlace !== null &&
     nearestPlace.distanceMeters <= (isSoftMode ? 200 : 400) &&
     !dismissedAlert &&
     !selectedPlace &&
     !selectedRestroom &&
     !hasInteractedWithMap &&
     !savedWalkAlertPlace &&
-    !savedWalkMode;
+    viewMode !== "saved";
 
   useEffect(() => {
     if (showNearbyAlert) {
@@ -274,7 +292,7 @@ function MapPage() {
     }
 
     const nearestSaved = savedPlacesNearby.find(
-      (place) => !dismissedSavedWalkIds.includes(String(place.id)),
+      (place) => !dismissedSavedWalkIds.includes(String(place.id))
     );
 
     if (!nearestSaved) {
@@ -289,7 +307,7 @@ function MapPage() {
     ) {
       if (savedWalkAlertPlace?.id !== nearestSaved.id) {
         const audio = new Audio("/ping.mp3");
-        audio.volume = 0.35;
+        audio.volume = 0.4;
         audio.play().catch(() => {});
         navigator.vibrate?.(200);
       }
@@ -362,6 +380,45 @@ function MapPage() {
     window.open(`https://www.google.com/maps?q=${lat},${lng}`, "_blank");
   }
 
+  function handleSetAllMode() {
+    setViewMode("all");
+    setSavedWalkMode(false);
+    localStorage.setItem("savedWalkMode", JSON.stringify(false));
+    setSavedWalkAlertPlace(null);
+    setSavedWalkSnoozed(false);
+    setDismissedSavedWalkIds([]);
+    setDismissedAlert(false);          
+  setHasInteractedWithMap(false);
+  }
+  
+  function handleSetInterestsMode() {
+    setViewMode("interests");
+    setSavedWalkMode(false);
+    localStorage.setItem("savedWalkMode", JSON.stringify(false));
+    setSavedWalkAlertPlace(null);
+    setSavedWalkSnoozed(false);
+    setDismissedAlert(false);
+    setHasInteractedWithMap(false);
+  }
+
+  function handleSetSavedWalkMode() {
+    setViewMode("saved");
+    setSavedWalkMode(true);
+    localStorage.setItem("savedWalkMode", JSON.stringify(true));
+    setSavedWalkSnoozed(false);
+    setDismissedSavedWalkIds([]);
+  }
+
+  function handleShowAllPlaces() {
+    localStorage.removeItem("selectedCategories");
+    setSelectedCategories([]);
+    setViewMode("all");
+    setSavedWalkMode(false);
+    localStorage.setItem("savedWalkMode", JSON.stringify(false));
+    setSavedWalkAlertPlace(null);
+    setSavedWalkSnoozed(false);
+  }
+
   return (
     <div className="map-page">
       <div className="map-shell">
@@ -385,9 +442,66 @@ function MapPage() {
           <p className="map-subtitle">
             Discover places with cultural impact around you
           </p>
-          {selectedCategories.length > 0 && (
+
+          <div className="map-view-modes">
+            <button
+              className={`map-view-mode ${
+                viewMode === "all" ? "map-view-mode--active" : ""
+              }`}
+              onClick={handleSetAllMode}
+            >
+              All places
+            </button>
+
+            <button
+              className={`map-view-mode ${
+                viewMode === "interests" ? "map-view-mode--active" : ""
+              }`}
+              onClick={handleSetInterestsMode}
+            >
+              My interests
+            </button>
+
+            <button
+              className={`map-view-mode ${
+                viewMode === "saved" ? "map-view-mode--active" : ""
+              }`}
+              onClick={handleSetSavedWalkMode}
+            >
+              Saved walk
+            </button>
+          </div>
+
+          {viewMode === "interests" && selectedCategories.length > 0 && (
+            <div className="map-active-filters-row">
+              <p className="map-active-filters">
+                🧭 Showing: {selectedCategories.join(" + ")}
+              </p>
+
+              <button
+                className="map-clear-filters"
+                onClick={handleShowAllPlaces}
+              >
+                Show all places
+              </button>
+            </div>
+          )}
+
+          {viewMode === "interests" && selectedCategories.length === 0 && (
             <p className="map-active-filters">
-              🧭 Showing: {selectedCategories.join(" + ")}
+              No interests selected yet. Showing all places.
+            </p>
+          )}
+
+          {viewMode === "saved" && savedIds.length === 0 && (
+            <p className="map-active-filters">
+              No saved places yet. Save places first to use Saved walk.
+            </p>
+          )}
+
+          {viewMode === "saved" && savedIds.length > 0 && (
+            <p className="map-active-filters">
+              Saved walk is active: showing your saved places only.
             </p>
           )}
 
@@ -447,7 +561,7 @@ function MapPage() {
             })}
 
             {showRestrooms &&
-              restrooms.map((restroom) => (
+              restroomsWithDistance.map((restroom) => (
                 <Marker
                   key={`restroom-${restroom.id}`}
                   position={restroom.coordinates}
@@ -515,7 +629,9 @@ function MapPage() {
           </div>
 
           <button
-            className={`map-quick-toggle ${showRestrooms ? "map-quick-toggle--active" : ""}`}
+            className={`map-quick-toggle ${
+              showRestrooms ? "map-quick-toggle--active" : ""
+            }`}
             onClick={handleToggleRestrooms}
             title="Show restrooms"
             aria-label="Toggle restrooms layer"
@@ -533,8 +649,12 @@ function MapPage() {
 
               <p className="nearby-alert-title">
                 {isSoftMode
-                  ? `Something interesting is ${formatDistance(nearestPlace.distanceMeters)} away`
-                  : `You are ${formatDistance(nearestPlace.distanceMeters)} from a place with high cultural impact`}
+                  ? `Something interesting is ${formatDistance(
+                      nearestPlace.distanceMeters
+                    )} away`
+                  : `You are ${formatDistance(
+                      nearestPlace.distanceMeters
+                    )} from a place with high cultural impact`}
               </p>
 
               <p className="nearby-alert-text">
@@ -580,7 +700,7 @@ function MapPage() {
                     const id = String(savedWalkAlertPlace.id);
 
                     setDismissedSavedWalkIds((prev) =>
-                      prev.includes(id) ? prev : [...prev, id],
+                      prev.includes(id) ? prev : [...prev, id]
                     );
 
                     handleSelectPlace(savedWalkAlertPlace.id);

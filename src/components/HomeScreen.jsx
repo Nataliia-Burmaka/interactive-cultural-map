@@ -31,7 +31,10 @@ function HomeScreen({ selectedCategories, onToggleCategory, onContinue }) {
         <div className="mode-grid">
           <button
             className="mode-card mode-card--explore"
-            onClick={() => navigate("/map")}
+            onClick={() => {
+              localStorage.removeItem("selectedCategories");
+              navigate("/map");
+            }}
           >
             <div className="mode-card-icon mode-card-icon--explore">◈</div>
             <div className="mode-card-body">
