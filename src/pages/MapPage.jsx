@@ -471,7 +471,23 @@ function MapPage() {
               Saved walk
             </button>
           </div>
+          {viewMode === "all" && (
+  <p className="map-mode-hint">
+    Showing all cultural places. Tap any marker to explore.
+  </p>
+)}
 
+{viewMode === "interests" && (
+  <p className="map-mode-hint">
+    Showing places that match your selected categories.
+  </p>
+)}
+
+{viewMode === "saved" && (
+  <p className="map-mode-hint">
+    Showing only places you saved. Nearby saved places can trigger alerts.
+  </p>
+)}
           {viewMode === "interests" && selectedCategories.length > 0 && (
             <div className="map-active-filters-row">
               <p className="map-active-filters">
@@ -548,13 +564,7 @@ function MapPage() {
                   }}
                 >
                   <Tooltip direction="top" offset={[0, -10]} opacity={1}>
-                    <div className="map-hover-hint">
-                      <strong>{place.title}</strong>
-                      <br />
-                      {place.category}
-                      <br />
-                      DNA {place.dna}
-                    </div>
+                    <strong>{place.title}</strong>
                   </Tooltip>
                 </Marker>
               );

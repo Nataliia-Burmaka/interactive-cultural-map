@@ -98,12 +98,12 @@ function ResultsPage() {
                   View details
                 </button>
 
-                <button
-                  className="secondary-button"
-                  onClick={() => handleSave(place.id)}
-                >
-                  Save for later
-                </button>
+               <button
+  className={`secondary-button ${savedIds.includes(place.id) ? "saved-button" : ""}`}
+  onClick={() => handleSave(place.id)}
+>
+  {savedIds.includes(place.id) ? "Saved ✓" : "Save for later"}
+</button>
               </div>
             </div>
           </article>
