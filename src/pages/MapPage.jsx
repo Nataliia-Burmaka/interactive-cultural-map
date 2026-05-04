@@ -563,9 +563,9 @@ function MapPage() {
                     click: () => handleSelectPlace(place.id),
                   }}
                 >
-                  <Tooltip direction="top" offset={[0, -10]} opacity={1}>
-                    <strong>{place.title}</strong>
-                  </Tooltip>
+                 <Tooltip direction="bottom" offset={[0, 12]} opacity={1}>
+  <strong>{place.title}</strong>
+</Tooltip>
                 </Marker>
               );
             })}

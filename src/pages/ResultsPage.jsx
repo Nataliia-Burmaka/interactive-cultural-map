@@ -1,4 +1,4 @@
-import { useMemo } from "react";
+import { useMemo, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { places } from "../data/places";
 
@@ -11,6 +11,9 @@ function getCategoryClass(category) {
 function ResultsPage() {
   const navigate = useNavigate();
   const location = useLocation();
+  const [savedIds, setSavedIds] = useState(() => {
+  return JSON.parse(localStorage.getItem("savedPlaces") || "[]");
+});
 
   const params = new URLSearchParams(location.search);
   const selectedCategories = params.get("categories")?.split("|") || [];
@@ -23,15 +26,15 @@ function ResultsPage() {
   }, [selectedCategories]);
 
   function handleSave(placeId) {
-    const savedPlaces = JSON.parse(localStorage.getItem("savedPlaces") || "[]");
+  setSavedIds((prev) => {
+    const next = prev.includes(placeId)
+      ? prev.filter((id) => id !== placeId)
+      : [...prev, placeId];
 
-    if (!savedPlaces.includes(placeId)) {
-      localStorage.setItem(
-        "savedPlaces",
-        JSON.stringify([...savedPlaces, placeId]),
-      );
-    }
-  }
+    localStorage.setItem("savedPlaces", JSON.stringify(next));
+    return next;
+  });
+}
 
   return (
     <div className="container">
