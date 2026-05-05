@@ -45,11 +45,11 @@ function ResultsPage() {
 
         <div className="results-top-actions">
           <button
-            className="saved-link-button"
-            onClick={() => navigate("/saved")}
-          >
-            Saved places
-          </button>
+  className="saved-link-button saved-link-button--primary"
+  onClick={() => navigate("/saved")}
+>
+  ⭐ Saved places
+</button>
         </div>
       </div>
 

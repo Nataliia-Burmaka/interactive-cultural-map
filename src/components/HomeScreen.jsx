@@ -8,11 +8,11 @@ function HomeScreen({ selectedCategories, onToggleCategory, onContinue }) {
     <div className="container home-container">
       <div className="home-top-row">
         <button
-          className="saved-link-button"
-          onClick={() => navigate("/saved")}
-        >
-          Saved places
-        </button>
+  className="saved-link-button saved-link-button--primary"
+  onClick={() => navigate("/saved")}
+>
+  ⭐ Saved places
+</button>
       </div>
 
       <section className="home-hero">
@@ -30,7 +30,6 @@ function HomeScreen({ selectedCategories, onToggleCategory, onContinue }) {
         <section className="planning-section">
         <div className="planning-header">
           <div>
-            <p className="planning-kicker">Planning mode</p>
             <h3>Plan by interest</h3>
           </div>
           <p>
@@ -64,6 +63,9 @@ function HomeScreen({ selectedCategories, onToggleCategory, onContinue }) {
           <p className="planning-note">
             Select one or more categories to continue.
           </p>
+          <p className="hint">
+  You can change this later on the map
+</p>
 
           <button className="continue continue--home" onClick={onContinue}>
             Continue
@@ -79,7 +81,8 @@ function HomeScreen({ selectedCategories, onToggleCategory, onContinue }) {
               navigate("/map");
             }}
           >
-            <div className="mode-card-icon mode-card-icon--explore">◈</div>
+            <h2 className="section-title">Or explore directly</h2>
+            <div className="mode-card-icon mode-card-icon--explore">🧭</div>
             <div className="mode-card-body">
               <h2>Explore the city</h2>
               <p>
