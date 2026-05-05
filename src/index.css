@@ -2354,7 +2354,7 @@ img {
 }
 
 .mode-section {
-  margin-bottom: 28px;
+  margin-top: 0;
 }
 
 .mode-grid {
@@ -3257,6 +3257,7 @@ button {
   font-weight: 700;
   box-shadow: 0 10px 24px rgba(15, 23, 42, 0.16);
   transition: all 0.2s ease;
+  text-transform: none;
 }
 
 .saved-link-button--primary:hover {
@@ -3264,10 +3265,10 @@ button {
   background: #0f172a;
 }
 .mode-section-title {
-  margin: 0 0 16px;
-  font-size: 32px;
-  line-height: 1.1;
-  font-weight: 800;
-  letter-spacing: -0.03em;
+  margin: 34px 0 16px;
+  font-size: 18px;
+  line-height: 1.25;
+  font-weight: 700;
+  letter-spacing: -0.01em;
   color: #0f172a;
 }

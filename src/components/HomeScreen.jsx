@@ -70,7 +70,7 @@ function HomeScreen({ selectedCategories, onToggleCategory, onContinue }) {
         </div>
       </section>
       <section className="mode-section">
-  <h2 className="mode-section-title">Or explore directly</h2>
+  <h2 className="mode-section-title">Explore directly</h2>
 
   <div className="mode-grid">
     <button
