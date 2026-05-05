@@ -53,12 +53,15 @@ function SavedPage() {
         </button>
 
         <div className="results-top-actions">
-          <button
-            className="saved-link-button"
-            onClick={() => navigate("/map")}
-          >
-            🧭 Open cultural map
-          </button>
+         <button
+  className="saved-link-button saved-link-button--primary"
+  onClick={() => {
+    localStorage.setItem("savedWalkMode", JSON.stringify(true));
+    navigate("/map");
+  }}
+>
+  🧭 Open cultural map
+</button>
         </div>
       </div>
 
