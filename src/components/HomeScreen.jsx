@@ -61,52 +61,46 @@ function HomeScreen({ selectedCategories, onToggleCategory, onContinue }) {
 
         <div className="planning-footer">
           <p className="planning-note">
-            Select one or more categories to continue.
+            Select one or more categories to continue — you can change them later while exploring.
           </p>
-          <p className="hint">
-  You can change this later on the map
-</p>
-
+          
           <button className="continue continue--home" onClick={onContinue}>
             Continue
           </button>
         </div>
       </section>
       <section className="mode-section">
-        <div className="mode-grid">
-          <button
-            className="mode-card mode-card--explore"
-            onClick={() => {
-              localStorage.removeItem("selectedCategories");
-              navigate("/map");
-            }}
-          >
-            <h2 className="section-title">Or explore directly</h2>
-            <div className="mode-card-icon mode-card-icon--explore">🧭</div>
-            <div className="mode-card-body">
-              <h2>Explore the city</h2>
-              <p>
-                See nearby places with cultural impact and discover the city
-                through meaning, atmosphere, and context.
-              </p>
-            </div>
-          </button>
+  <h2 className="mode-section-title">Or explore directly</h2>
 
-          <button
-            className="mode-card mode-card--needs"
-            onClick={() => navigate("/restrooms")}
-          >
-            <div className="mode-card-icon mode-card-icon--needs">🚻</div>
-            <div className="mode-card-body">
-              <h2>Solve a quick need</h2>
-              <p>
-                Find a restroom nearby fast, then continue exploring without
-                breaking the experience.
-              </p>
-            </div>
-          </button>
-        </div>
-      </section>
+  <div className="mode-grid">
+    <button
+      className="mode-card mode-card--explore"
+      onClick={() => {
+        localStorage.removeItem("selectedCategories");
+        navigate("/map");
+      }}
+    >
+      <div className="mode-icon">🧭</div>
+      <h3>Explore the city</h3>
+      <p>
+        See nearby places with cultural impact and discover the city through
+        meaning, atmosphere, and context.
+      </p>
+    </button>
+
+    <button
+      className="mode-card mode-card--quick"
+      onClick={() => navigate("/restrooms")}
+    >
+      <div className="mode-icon">🚻</div>
+      <h3>Solve a quick need</h3>
+      <p>
+        Find a restroom nearby fast, then continue exploring without breaking
+        the experience.
+      </p>
+    </button>
+  </div>
+</section>
     </div>
   );
 }

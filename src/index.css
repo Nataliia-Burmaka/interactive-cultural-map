@@ -3261,3 +3261,9 @@ button {
 .saved-link-button--primary:hover {
   transform: translateY(-1px);
 }
+.mode-section-title {
+  margin: 0 0 14px;
+  font-size: 20px;
+  font-weight: 800;
+  color: #0f172a;
+}
