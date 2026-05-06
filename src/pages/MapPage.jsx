@@ -218,10 +218,8 @@ function MapPage() {
   }, [filteredPlaces]);
 
   const selectedPlace = useMemo(() => {
-    return (
-      placesWithDistance.find((place) => place.id === selectedPlaceId) || null
-    );
-  }, [placesWithDistance, selectedPlaceId]);
+  return filteredPlaces.find((place) => place.id === selectedPlaceId) || null;
+}, [filteredPlaces, selectedPlaceId]);
 
   const savedPlacesNearby = useMemo(() => {
     return placesWithDistance
@@ -389,17 +387,19 @@ function MapPage() {
     setDismissedSavedWalkIds([]);
     setDismissedAlert(false);          
   setHasInteractedWithMap(false);
+  setSelectedPlaceId(null);
   }
   
   function handleSetInterestsMode() {
-    setViewMode("interests");
-    setSavedWalkMode(false);
-    localStorage.setItem("savedWalkMode", JSON.stringify(false));
-    setSavedWalkAlertPlace(null);
-    setSavedWalkSnoozed(false);
-    setDismissedAlert(false);
-    setHasInteractedWithMap(false);
-  }
+  setViewMode("interests");
+  setSavedWalkMode(false);
+  localStorage.setItem("savedWalkMode", JSON.stringify(false));
+  setSavedWalkAlertPlace(null);
+  setSavedWalkSnoozed(false);
+  setDismissedAlert(false);
+  setHasInteractedWithMap(false);
+  setSelectedPlaceId(null);
+}
 
   function handleSetSavedWalkMode() {
     setViewMode("saved");
@@ -407,6 +407,7 @@ function MapPage() {
     localStorage.setItem("savedWalkMode", JSON.stringify(true));
     setSavedWalkSnoozed(false);
     setDismissedSavedWalkIds([]);
+    setSelectedPlaceId(null);
   }
 
   function handleShowAllPlaces() {
