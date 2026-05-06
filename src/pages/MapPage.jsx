@@ -163,17 +163,17 @@ function MapPage() {
         enableHighAccuracy: true,
         timeout: 10000,
         maximumAge: 60000,
-      }
+      },
     );
   }, []);
 
   useEffect(() => {
     const savedWalk = JSON.parse(
-      localStorage.getItem("savedWalkMode") || "false"
+      localStorage.getItem("savedWalkMode") || "false",
     );
     const savedPlaces = JSON.parse(localStorage.getItem("savedPlaces") || "[]");
     const storedCategories = JSON.parse(
-      localStorage.getItem("selectedCategories") || "[]"
+      localStorage.getItem("selectedCategories") || "[]",
     );
 
     setSavedWalkMode(savedWalk);
@@ -201,7 +201,7 @@ function MapPage() {
       if (selectedCategories.length === 0) return placesWithDistance;
 
       return placesWithDistance.filter((place) =>
-        selectedCategories.includes(place.category)
+        selectedCategories.includes(place.category),
       );
     }
 
@@ -218,8 +218,23 @@ function MapPage() {
   }, [filteredPlaces]);
 
   const selectedPlace = useMemo(() => {
-  return filteredPlaces.find((place) => place.id === selectedPlaceId) || null;
-}, [filteredPlaces, selectedPlaceId]);
+    return (
+      filteredPlaces.find(
+        (place) => String(place.id) === String(selectedPlaceId),
+      ) || null
+    );
+  }, [filteredPlaces, selectedPlaceId]);
+  useEffect(() => {
+    if (!selectedPlaceId) return;
+
+    const stillVisible = filteredPlaces.some(
+      (place) => String(place.id) === String(selectedPlaceId),
+    );
+
+    if (!stillVisible) {
+      setSelectedPlaceId(null);
+    }
+  }, [filteredPlaces, selectedPlaceId]);
 
   const savedPlacesNearby = useMemo(() => {
     return placesWithDistance
@@ -239,7 +254,7 @@ function MapPage() {
   const selectedRestroom = useMemo(() => {
     return (
       restroomsWithDistance.find(
-        (restroom) => restroom.id === selectedRestroomId
+        (restroom) => restroom.id === selectedRestroomId,
       ) || null
     );
   }, [restroomsWithDistance, selectedRestroomId]);
@@ -252,15 +267,15 @@ function MapPage() {
         ...place,
         nearbyDistance: getDistanceMeters(
           selectedRestroom.coordinates,
-          place.coordinates
+          place.coordinates,
         ),
       }))
       .sort((a, b) => a.nearbyDistance - b.nearbyDistance)
       .slice(0, 2);
   }, [selectedRestroom]);
 
- const isSoftMode = viewMode === "all";
- 
+  const isSoftMode = viewMode === "all";
+
   const showNearbyAlert =
     nearestPlace !== null &&
     nearestPlace.distanceMeters <= (isSoftMode ? 200 : 400) &&
@@ -290,7 +305,7 @@ function MapPage() {
     }
 
     const nearestSaved = savedPlacesNearby.find(
-      (place) => !dismissedSavedWalkIds.includes(String(place.id))
+      (place) => !dismissedSavedWalkIds.includes(String(place.id)),
     );
 
     if (!nearestSaved) {
@@ -385,21 +400,21 @@ function MapPage() {
     setSavedWalkAlertPlace(null);
     setSavedWalkSnoozed(false);
     setDismissedSavedWalkIds([]);
-    setDismissedAlert(false);          
-  setHasInteractedWithMap(false);
-  setSelectedPlaceId(null);
+    setDismissedAlert(false);
+    setHasInteractedWithMap(false);
+    setSelectedPlaceId(null);
   }
-  
+
   function handleSetInterestsMode() {
-  setViewMode("interests");
-  setSavedWalkMode(false);
-  localStorage.setItem("savedWalkMode", JSON.stringify(false));
-  setSavedWalkAlertPlace(null);
-  setSavedWalkSnoozed(false);
-  setDismissedAlert(false);
-  setHasInteractedWithMap(false);
-  setSelectedPlaceId(null);
-}
+    setViewMode("interests");
+    setSavedWalkMode(false);
+    localStorage.setItem("savedWalkMode", JSON.stringify(false));
+    setSavedWalkAlertPlace(null);
+    setSavedWalkSnoozed(false);
+    setDismissedAlert(false);
+    setHasInteractedWithMap(false);
+    setSelectedPlaceId(null);
+  }
 
   function handleSetSavedWalkMode() {
     setViewMode("saved");
@@ -430,11 +445,11 @@ function MapPage() {
 
           <div className="map-top-actions">
             <button
-  className="saved-link-button saved-link-button--primary"
-  onClick={() => navigate("/saved")}
->
-  ⭐ Saved places
-</button>
+              className="saved-link-button saved-link-button--primary"
+              onClick={() => navigate("/saved")}
+            >
+              ⭐ Saved places
+            </button>
           </div>
         </div>
 
@@ -473,22 +488,23 @@ function MapPage() {
             </button>
           </div>
           {viewMode === "all" && (
-  <p className="map-mode-hint">
-    Showing all cultural places. Tap any marker to explore.
-  </p>
-)}
+            <p className="map-mode-hint">
+              Showing all cultural places. Tap any marker to explore.
+            </p>
+          )}
 
-{viewMode === "interests" && (
-  <p className="map-mode-hint">
-    Showing places that match your selected categories.
-  </p>
-)}
+          {viewMode === "interests" && (
+            <p className="map-mode-hint">
+              Showing places that match your selected categories.
+            </p>
+          )}
 
-{viewMode === "saved" && (
-  <p className="map-mode-hint">
-    Showing only places you saved. Nearby saved places can trigger alerts.
-  </p>
-)}
+          {viewMode === "saved" && (
+            <p className="map-mode-hint">
+              Showing only places you saved. Nearby saved places can trigger
+              alerts.
+            </p>
+          )}
           {viewMode === "interests" && selectedCategories.length > 0 && (
             <div className="map-active-filters-row">
               <p className="map-active-filters">
@@ -553,7 +569,8 @@ function MapPage() {
             />
 
             {filteredPlaces.map((place) => {
-              const isActive = place.id === selectedPlaceId;
+              const isActive =
+                selectedPlace && String(place.id) === String(selectedPlace.id);
 
               return (
                 <Marker
@@ -564,9 +581,9 @@ function MapPage() {
                     click: () => handleSelectPlace(place.id),
                   }}
                 >
-                 <Tooltip direction="bottom" offset={[0, 12]} opacity={1}>
-  <strong>{place.title}</strong>
-</Tooltip>
+                  <Tooltip direction="bottom" offset={[0, 12]} opacity={1}>
+                    <strong>{place.title}</strong>
+                  </Tooltip>
                 </Marker>
               );
             })}
@@ -661,10 +678,10 @@ function MapPage() {
               <p className="nearby-alert-title">
                 {isSoftMode
                   ? `Something interesting is ${formatDistance(
-                      nearestPlace.distanceMeters
+                      nearestPlace.distanceMeters,
                     )} away`
                   : `You are ${formatDistance(
-                      nearestPlace.distanceMeters
+                      nearestPlace.distanceMeters,
                     )} from a place with high cultural impact`}
               </p>
 
@@ -711,7 +728,7 @@ function MapPage() {
                     const id = String(savedWalkAlertPlace.id);
 
                     setDismissedSavedWalkIds((prev) =>
-                      prev.includes(id) ? prev : [...prev, id]
+                      prev.includes(id) ? prev : [...prev, id],
                     );
 
                     handleSelectPlace(savedWalkAlertPlace.id);
