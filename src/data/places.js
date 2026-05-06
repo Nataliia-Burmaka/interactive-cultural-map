@@ -1223,7 +1223,7 @@ export const places = [
       "Panda reflects a different layer of the city — not architecture or nature, but taste, memory, and everyday culture shaped through Finnish confectionery traditions.",
   },
   {
-    id: 45,
+    id: 47,
     title: "Kuokkala Manor (heritage & vintage collection)",
     category: "Contemporary City",
     type: "hybrid-heritage",
