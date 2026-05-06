@@ -12,8 +12,8 @@ function ResultsPage() {
   const navigate = useNavigate();
   const location = useLocation();
   const [savedIds, setSavedIds] = useState(() => {
-  return JSON.parse(localStorage.getItem("savedPlaces") || "[]");
-});
+    return JSON.parse(localStorage.getItem("savedPlaces") || "[]");
+  });
 
   const params = new URLSearchParams(location.search);
   const selectedCategories = params.get("categories")?.split("|") || [];
@@ -26,15 +26,15 @@ function ResultsPage() {
   }, [selectedCategories]);
 
   function handleSave(placeId) {
-  setSavedIds((prev) => {
-    const next = prev.includes(placeId)
-      ? prev.filter((id) => id !== placeId)
-      : [...prev, placeId];
+    setSavedIds((prev) => {
+      const next = prev.includes(placeId)
+        ? prev.filter((id) => id !== placeId)
+        : [...prev, placeId];
 
-    localStorage.setItem("savedPlaces", JSON.stringify(next));
-    return next;
-  });
-}
+      localStorage.setItem("savedPlaces", JSON.stringify(next));
+      return next;
+    });
+  }
 
   return (
     <div className="container">
@@ -45,11 +45,11 @@ function ResultsPage() {
 
         <div className="results-top-actions">
           <button
-  className="saved-link-button saved-link-button--primary"
-  onClick={() => navigate("/saved")}
->
-  ⭐ Saved places
-</button>
+            className="saved-link-button saved-link-button--primary"
+            onClick={() => navigate("/saved")}
+          >
+            ⭐ Saved places
+          </button>
         </div>
       </div>
 
@@ -71,7 +71,17 @@ function ResultsPage() {
           </p>
         </div>
 
-        <button className="primary-button" onClick={() => navigate("/map")}>
+        <button
+          className="primary-button"
+          onClick={() => {
+            localStorage.setItem(
+              "selectedCategories",
+              JSON.stringify(selectedCategories),
+            );
+            localStorage.setItem("savedWalkMode", JSON.stringify(false));
+            navigate("/map?mode=interests");
+          }}
+        >
           🧭 Open cultural map
         </button>
       </div>
@@ -80,10 +90,8 @@ function ResultsPage() {
         {filteredPlaces.map((place) => (
           <article key={place.id} className="place-card">
             <img src={place.image} alt={place.title} className="place-image" />
-
             <div className="place-content">
               <div className="place-topline">
-                <span className="saved-inline">Not saved</span>
                 <span className={getCategoryClass(place.category)}>
                   {place.category}
                 </span>
@@ -101,12 +109,12 @@ function ResultsPage() {
                   View details
                 </button>
 
-               <button
-  className={`secondary-button ${savedIds.includes(place.id) ? "saved-button" : ""}`}
-  onClick={() => handleSave(place.id)}
->
-  {savedIds.includes(place.id) ? "Saved ✓" : "Save for later"}
-</button>
+                <button
+                  className={`secondary-button ${savedIds.includes(place.id) ? "saved-button" : ""}`}
+                  onClick={() => handleSave(place.id)}
+                >
+                  {savedIds.includes(place.id) ? "Saved ✓" : "Save for later"}
+                </button>
               </div>
             </div>
           </article>
@@ -114,7 +122,14 @@ function ResultsPage() {
       </div>
       <button
         className="floating-map-button"
-        onClick={() => navigate("/map")}
+        onClick={() => {
+          localStorage.setItem(
+            "selectedCategories",
+            JSON.stringify(selectedCategories),
+          );
+          localStorage.setItem("savedWalkMode", JSON.stringify(false));
+          navigate("/map?mode=interests");
+        }}
         aria-label="Open cultural map"
         title="Open cultural map"
       >

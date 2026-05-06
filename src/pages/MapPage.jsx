@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import {
   MapContainer,
   TileLayer,
@@ -124,7 +124,7 @@ const legendItems = [
 
 function MapPage() {
   const navigate = useNavigate();
-
+  const location = useLocation();
   const fallbackPosition = [62.2398, 25.7462];
 
   const [userPosition, setUserPosition] = useState(fallbackPosition);
@@ -143,7 +143,7 @@ function MapPage() {
   const [savedWalkSnoozed, setSavedWalkSnoozed] = useState(false);
 
   const [selectedCategories, setSelectedCategories] = useState([]);
-  const [viewMode, setViewMode] = useState("all");
+  const [viewMode, setViewMode] = useState("interests");
 
   useEffect(() => {
     if (!navigator.geolocation) {
@@ -180,10 +180,17 @@ function MapPage() {
     setSavedIds(savedPlaces);
     setSelectedCategories(storedCategories);
 
-    if (savedWalk) {
+    const params = new URLSearchParams(location.search);
+    const modeFromUrl = params.get("mode");
+
+    if (modeFromUrl === "interests") {
+      setViewMode("interests");
+      setSavedWalkMode(false);
+      localStorage.setItem("savedWalkMode", JSON.stringify(false));
+    } else if (savedWalk) {
       setViewMode("saved");
     }
-  }, []);
+  }, [location.search]);
 
   const placesWithDistance = useMemo(() => {
     return places
