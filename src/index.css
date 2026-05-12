@@ -4650,3 +4650,35 @@ body:has(.interests-page) {
     height: 620px;
   }
 }
+/* ===== Mobile How it works mockups fix ===== */
+
+@media (max-width: 760px) {
+  .how-step {
+    grid-template-columns: 56px 1fr !important;
+    gap: 16px !important;
+    padding: 22px !important;
+  }
+
+  .step-preview {
+    grid-column: 1 / -1 !important;
+    width: 100% !important;
+    max-width: none !important;
+    margin-top: 14px !important;
+    border-radius: 22px !important;
+  }
+
+  .step-preview img {
+    width: 100% !important;
+    height: auto !important;
+    display: block !important;
+  }
+
+  .step-copy h2 {
+    font-size: 28px !important;
+  }
+
+  .step-copy p {
+    font-size: 17px !important;
+    line-height: 1.5 !important;
+  }
+}
