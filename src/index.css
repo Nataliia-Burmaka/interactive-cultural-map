@@ -4583,3 +4583,59 @@ body:has(.interests-page) {
   align-items: center;
   gap: 8px;
 }
+/* ===== Map header spacing polish ===== */
+
+.map-header {
+  margin-bottom: 22px !important;
+}
+.map-header {
+  max-width: 760px;
+}
+
+.map-page .map-title {
+  margin-bottom: 12px !important;
+}
+
+.map-page .map-subtitle {
+  margin-bottom: 18px !important;
+  font-size: 17px !important;
+}
+
+.map-view-modes {
+  margin-top: 0 !important;
+  margin-bottom: 14px !important;
+  padding: 7px !important;
+  gap: 8px !important;
+  border-radius: 999px !important;
+}
+
+.map-view-mode {
+  min-height: 38px !important;
+  padding: 0 18px !important;
+  font-size: 14px !important;
+}
+
+.map-mode-hint {
+  margin: 8px 0 12px !important;
+  font-size: 14px !important;
+}
+
+.map-active-filters-row {
+  margin-top: 10px !important;
+  margin-bottom: 14px !important;
+  gap: 12px !important;
+}
+
+.map-active-filters {
+  font-size: 14px !important;
+}
+
+.map-clear-filters {
+  min-height: 30px !important;
+  padding: 0 12px !important;
+}
+
+.location-note {
+  margin: 12px 0 18px !important;
+  font-size: 14px !important;
+}
