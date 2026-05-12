@@ -4642,37 +4642,6 @@ body:has(.interests-page) {
 /* ===== Desktop decorative bird on map page ===== */
 
 @media (min-width: 1024px) {
-  .map-page {
-    position: relative;
-    overflow-x: hidden;
-  }
-
-  .map-page::after {
-  content: "";
-  position: absolute;
-
-  right: -40px;
-  bottom: 40px;
-
-  width: 420px;
-  height: 420px;
-
-  background: url("/images/bird.png") center / contain no-repeat;
-
-  opacity: 0.05;
-
-  filter: blur(0.3px);
-
-  pointer-events: none;
-
-  z-index: 0;
-}
-  .map-shell {
-    position: relative;
-    z-index: 1;
-  }
-}
-@media (min-width: 1024px) {
   .map-shell {
     max-width: 1250px;
   }
