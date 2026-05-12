@@ -3142,7 +3142,9 @@ button {
   border: 1px solid rgba(17, 24, 39, 0.06);
   backdrop-filter: blur(10px);
   cursor: pointer;
-  transition: transform 0.18s ease, box-shadow 0.18s ease;
+  transition:
+    transform 0.18s ease,
+    box-shadow 0.18s ease;
 }
 
 .floating-map-button:hover {
@@ -3285,8 +3287,16 @@ button {
 .onboarding-page {
   min-height: 100vh;
   background:
-    radial-gradient(circle at 72% 32%, rgba(108, 92, 231, 0.32), transparent 30%),
-    radial-gradient(circle at 20% 84%, rgba(139, 124, 255, 0.16), transparent 26%),
+    radial-gradient(
+      circle at 72% 32%,
+      rgba(108, 92, 231, 0.32),
+      transparent 30%
+    ),
+    radial-gradient(
+      circle at 20% 84%,
+      rgba(139, 124, 255, 0.16),
+      transparent 26%
+    ),
     linear-gradient(180deg, var(--deep-navy) 0%, var(--deep-navy-2) 100%);
   color: #fff;
   overflow-x: hidden;
@@ -3360,7 +3370,11 @@ button {
   padding: 0 34px;
   border: none;
   border-radius: 22px;
-  background: linear-gradient(135deg, var(--accent-purple), var(--accent-purple-soft));
+  background: linear-gradient(
+    135deg,
+    var(--accent-purple),
+    var(--accent-purple-soft)
+  );
   color: white;
   font-size: 19px;
   font-weight: 800;
@@ -3380,7 +3394,11 @@ button {
   width: min(440px, 86%);
   aspect-ratio: 1;
   border-radius: 999px;
-  background: radial-gradient(circle, rgba(139, 124, 255, 0.34), transparent 68%);
+  background: radial-gradient(
+    circle,
+    rgba(139, 124, 255, 0.34),
+    transparent 68%
+  );
   filter: blur(2px);
 }
 
@@ -3440,7 +3458,11 @@ button {
   display: grid;
   place-items: center;
   border-radius: 20px;
-  background: linear-gradient(135deg, var(--accent-purple), var(--accent-purple-soft));
+  background: linear-gradient(
+    135deg,
+    var(--accent-purple),
+    var(--accent-purple-soft)
+  );
   color: white;
   font-size: 28px;
   font-weight: 900;
@@ -3492,8 +3514,8 @@ button {
   position: relative;
   overflow: hidden;
   background:
-    linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px),
+    linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
     rgba(255, 255, 255, 0.08);
   background-size: 28px 28px;
 }
@@ -3507,9 +3529,18 @@ button {
   box-shadow: 0 0 0 8px rgba(139, 124, 255, 0.15);
 }
 
-.map-dot--one { left: 28%; top: 38%; }
-.map-dot--two { right: 28%; top: 24%; }
-.map-dot--three { right: 38%; bottom: 24%; }
+.map-dot--one {
+  left: 28%;
+  top: 38%;
+}
+.map-dot--two {
+  right: 28%;
+  top: 24%;
+}
+.map-dot--three {
+  right: 38%;
+  bottom: 24%;
+}
 
 .step-mockup--card {
   padding: 18px;
@@ -3521,7 +3552,7 @@ button {
 }
 
 .step-mockup--card span {
-  color: rgba(255,255,255,0.68);
+  color: rgba(255, 255, 255, 0.68);
   font-size: 13px;
 }
 
@@ -3535,7 +3566,11 @@ button {
 .interests-page {
   min-height: 100vh;
   background:
-    radial-gradient(circle at top right, rgba(108, 92, 231, 0.12), transparent 30%),
+    radial-gradient(
+      circle at top right,
+      rgba(108, 92, 231, 0.12),
+      transparent 30%
+    ),
     linear-gradient(180deg, #f7f8fc 0%, #eef1f7 100%);
 }
 
@@ -3656,8 +3691,7 @@ button {
     width: 250px;
   }
 
-  
-   .how-header {
+  .how-header {
     margin: 40px auto 26px;
   }
 
@@ -3713,11 +3747,11 @@ button {
   padding: 0 22px;
 
   border-radius: 18px;
-  border: 1px solid rgba(255,255,255,0.14);
+  border: 1px solid rgba(255, 255, 255, 0.14);
 
-  background: rgba(255,255,255,0.04);
+  background: rgba(255, 255, 255, 0.04);
 
-  color: rgba(255,255,255,0.82);
+  color: rgba(255, 255, 255, 0.82);
 
   font-size: 15px;
   font-weight: 600;
@@ -3731,8 +3765,8 @@ button {
 }
 
 .hero-skip:hover {
-  background: rgba(255,255,255,0.08);
-  border-color: rgba(255,255,255,0.24);
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.24);
   transform: translateY(-1px);
 }
 .hero-actions {
@@ -3745,7 +3779,7 @@ button {
   margin-bottom: 28px;
   border: none;
   background: transparent;
-  color: rgba(255,255,255,0.82);
+  color: rgba(255, 255, 255, 0.82);
   font-size: 15px;
   cursor: pointer;
 }
@@ -3754,9 +3788,9 @@ button {
   flex-shrink: 0;
   border-radius: 22px;
   overflow: hidden;
-  background: rgba(255,255,255,0.06);
-  border: 1px solid rgba(255,255,255,0.1);
-  box-shadow: 0 14px 34px rgba(0,0,0,0.18);
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 14px 34px rgba(0, 0, 0, 0.18);
 }
 
 .step-preview img {
@@ -3892,8 +3926,8 @@ button {
   min-height: 48px;
   padding: 0 18px;
   border-radius: 16px;
-  border: 1px solid rgba(255,255,255,0.14);
-  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: rgba(255, 255, 255, 0.08);
   color: white;
   font-weight: 700;
   cursor: pointer;
@@ -3901,7 +3935,7 @@ button {
 }
 
 .comfort-button:hover {
-  background: rgba(255,255,255,0.13);
+  background: rgba(255, 255, 255, 0.13);
 }
 
 @media (max-width: 720px) {
@@ -3936,8 +3970,16 @@ body:has(.interests-page) {
 .interests-page {
   min-height: 100vh !important;
   background:
-    radial-gradient(circle at 70% 25%, rgba(108, 92, 231, 0.24), transparent 30%),
-    radial-gradient(circle at 20% 90%, rgba(139, 124, 255, 0.16), transparent 28%),
+    radial-gradient(
+      circle at 70% 25%,
+      rgba(108, 92, 231, 0.24),
+      transparent 30%
+    ),
+    radial-gradient(
+      circle at 20% 90%,
+      rgba(139, 124, 255, 0.16),
+      transparent 28%
+    ),
     linear-gradient(180deg, #080b1a 0%, #0b1023 100%) !important;
   color: white !important;
 }
@@ -4006,8 +4048,16 @@ body:has(.interests-page) {
 .interests-page {
   min-height: 100vh !important;
   background:
-    radial-gradient(circle at 70% 25%, rgba(108, 92, 231, 0.24), transparent 30%),
-    radial-gradient(circle at 20% 90%, rgba(139, 124, 255, 0.16), transparent 28%),
+    radial-gradient(
+      circle at 70% 25%,
+      rgba(108, 92, 231, 0.24),
+      transparent 30%
+    ),
+    radial-gradient(
+      circle at 20% 90%,
+      rgba(139, 124, 255, 0.16),
+      transparent 28%
+    ),
     linear-gradient(180deg, #080b1a 0%, #0b1023 100%) !important;
   color: white !important;
 }
@@ -4036,9 +4086,6 @@ body:has(.interests-page) {
 }
 
 .interests-category-grid .category-card {
-  background: rgba(255, 255, 255, 0.08) !important;
-  border: 1px solid rgba(255, 255, 255, 0.14) !important;
-  color: white !important;
   box-shadow: none !important;
 }
 
