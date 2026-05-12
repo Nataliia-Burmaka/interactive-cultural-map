@@ -4639,3 +4639,39 @@ body:has(.interests-page) {
   margin: 12px 0 18px !important;
   font-size: 14px !important;
 }
+/* ===== Desktop decorative bird on map page ===== */
+
+@media (min-width: 1024px) {
+  .map-page {
+    position: relative;
+    overflow-x: hidden;
+  }
+
+  .map-page::after {
+    content: "";
+    position: fixed;
+    right: 6vw;
+    top: 170px;
+    width: 260px;
+    height: 260px;
+    background: url("/images/bird.png") center / contain no-repeat;
+    opacity: 0.08;
+    filter: drop-shadow(0 24px 60px rgba(108, 92, 231, 0.35));
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .map-shell {
+    position: relative;
+    z-index: 1;
+  }
+}
+@media (min-width: 1024px) {
+  .map-shell {
+    max-width: 1250px;
+  }
+
+  .real-map {
+    height: 620px;
+  }
+}
