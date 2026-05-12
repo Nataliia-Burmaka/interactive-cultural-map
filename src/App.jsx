@@ -1,5 +1,7 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./index.css";
+import HeroPage from "./pages/HeroPage";
+import HowItWorksPage from "./pages/HowItWorksPage";
 import HomePage from "./pages/HomePage";
 import ResultsPage from "./pages/ResultsPage";
 import PlacePage from "./pages/PlacePage";
@@ -11,7 +13,9 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<HomePage />} />
+        <Route path="/" element={<HeroPage />} />
+        <Route path="/how-it-works" element={<HowItWorksPage />} />
+        <Route path="/interests" element={<HomePage />} />
         <Route path="/results" element={<ResultsPage />} />
         <Route path="/place/:id" element={<PlacePage />} />
         <Route path="/saved" element={<SavedPage />} />

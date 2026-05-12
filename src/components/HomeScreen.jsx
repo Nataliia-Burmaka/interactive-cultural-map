@@ -5,102 +5,85 @@ function HomeScreen({ selectedCategories, onToggleCategory, onContinue }) {
   const navigate = useNavigate();
 
   return (
-    <div className="container home-container">
-      <div className="home-top-row">
-        <button
-  className="saved-link-button saved-link-button--primary"
-  onClick={() => navigate("/saved")}
->
-  ⭐ Saved places
-</button>
-      </div>
+    <div className="interests-page">
+      <div className="container home-container interests-container">
+        <div className="interests-brand-row">
+          <img src="/images/bird.png" alt="" className="brand-bird" />
+          <span>Jyväskylä Unique</span>
+        </div>
 
-      <section className="home-hero">
-        <p className="home-eyebrow">
-          <span className="eyebrow-dot" />
-          City discovery companion
-        </p>
-        <h1>Jyväskylä Unique</h1>
-        <p className="subtitle subtitle--hero">
-          A lightweight city companion that helps visitors discover what defines
-          the city — and solve practical needs along the way.
-        </p>
-      </section>
+        <section className="home-hero interests-hero">
+          <p className="home-eyebrow">
+            <span className="eyebrow-dot" />
+            Step 3 · Choose your interests
+          </p>
+          <h1>My interests</h1>
+          <p className="subtitle subtitle--hero">
+            Select one or more themes and get a curated shortlist of places that
+            help you read the city through meaning, identity and atmosphere.
+          </p>
+        </section>
 
-        <section className="planning-section">
-        <div className="planning-header">
-          <div>
-            <h3>Plan by interest</h3>
+        <section className="planning-section interests-section">
+          <div className="planning-header">
+            <div>
+              <p className="planning-kicker">Cultural discovery</p>
+              <h3>What would you like to explore?</h3>
+            </div>
+            <p>
+              You can change your interests later on the map.
+            </p>
           </div>
-          <p>
-            Choose what matters to you and get a curated shortlist of places to
-            explore.
-          </p>
-        </div>
 
-        <div className="grid category-grid">
-          {categories.map((cat) => {
-            const isSelected = selectedCategories.includes(cat);
+          <div className="grid category-grid interests-category-grid">
+            {categories.map((cat) => {
+              const isSelected = selectedCategories.includes(cat);
 
-            return (
-              <button
-                key={cat}
-                className={`card category-card category-card--${cat
-                  .toLowerCase()
-                  .replace(
-                    /[^a-z0-9]+/g,
-                    "-",
-                  )} ${isSelected ? "card--selected" : ""}`}
-                onClick={() => onToggleCategory(cat)}
-              >
-                <span className="category-card-label">{cat}</span>
-              </button>
-            );
-          })}
-        </div>
+              return (
+                <button
+                  key={cat}
+                  className={`card category-card category-card--${cat
+                    .toLowerCase()
+                    .replace(/[^a-z0-9]+/g, "-")} ${
+                    isSelected ? "card--selected" : ""
+                  }`}
+                  onClick={() => onToggleCategory(cat)}
+                >
+                  <span className="category-card-label">{cat}</span>
+                </button>
+              );
+            })}
+          </div>
 
-        <div className="planning-footer">
-          <p className="planning-note">
-            Select one or more categories to continue — you can change them later while exploring.
-          </p>
-          
-          <button className="continue continue--home" onClick={onContinue}>
-            Continue
+          <div className="planning-footer">
+            <p className="planning-note">
+              Choose at least one category to continue.
+            </p>
+
+            <button className="continue continue--home" onClick={onContinue}>
+              Show selected places
+            </button>
+          </div>
+        </section>
+
+        <section className="practical-comfort-card">
+          <div>
+            <p className="practical-label">Practical comfort</p>
+            <h2>Need a restroom nearby?</h2>
+            <p>
+              Open a separate restroom map first. Cultural suggestions will appear
+              only after you choose a restroom.
+            </p>
+          </div>
+
+          <button
+            className="secondary-button practical-button"
+            onClick={() => navigate("/restrooms")}
+          >
+            🚻 Open restroom map
           </button>
-        </div>
-      </section>
-      <section className="mode-section">
-  <h2 className="mode-section-title">Explore directly</h2>
-
-  <div className="mode-grid">
-    <button
-      className="mode-card mode-card--explore"
-      onClick={() => {
-        localStorage.removeItem("selectedCategories");
-        navigate("/map");
-      }}
-    >
-      <div className="mode-icon">🧭</div>
-      <h3>Explore the city</h3>
-      <p>
-        See nearby places with cultural impact and discover the city through
-        meaning, atmosphere, and context.
-      </p>
-    </button>
-
-    <button
-      className="mode-card mode-card--quick"
-      onClick={() => navigate("/restrooms")}
-    >
-      <div className="mode-icon">🚻</div>
-      <h3>Solve a quick need</h3>
-      <p>
-        Find a restroom nearby fast, then continue exploring without breaking
-        the experience.
-      </p>
-    </button>
-  </div>
-</section>
+        </section>
+      </div>
     </div>
   );
 }
