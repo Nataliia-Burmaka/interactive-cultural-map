@@ -23,18 +23,21 @@ function HeroPage() {
               lightweight city companion.
             </p>
 
-            <button
-              className="hero-cta"
-              onClick={() => navigate("/how-it-works")}
-            >
-              Start exploring
-            </button>
-            <button
-              className="hero-skip"
-              onClick={() => navigate("/interests")}
-            >
-              I already know how it works
-            </button>
+            <div className="hero-actions">
+              <button
+                className="hero-cta"
+                onClick={() => navigate("/how-it-works")}
+              >
+                Start exploring
+              </button>
+
+              <button
+                className="hero-skip"
+                onClick={() => navigate("/interests")}
+              >
+                I already know how it works
+              </button>
+            </div>
           </div>
 
           <div className="hero-visual" aria-hidden="true">

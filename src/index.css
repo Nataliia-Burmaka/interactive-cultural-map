@@ -3707,18 +3707,39 @@ button {
   }
 }
 .hero-skip {
-  margin-top: 18px;
-  border: none;
-  background: transparent;
-  color: rgba(255,255,255,0.72);
+  margin-left: 14px;
+
+  min-height: 52px;
+  padding: 0 22px;
+
+  border-radius: 18px;
+  border: 1px solid rgba(255,255,255,0.14);
+
+  background: rgba(255,255,255,0.04);
+
+  color: rgba(255,255,255,0.82);
+
   font-size: 15px;
+  font-weight: 600;
+
   cursor: pointer;
-  transition: opacity 0.2s ease;
+
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease,
+    transform 0.2s ease;
 }
 
 .hero-skip:hover {
-  opacity: 1;
-  color: white;
+  background: rgba(255,255,255,0.08);
+  border-color: rgba(255,255,255,0.24);
+  transform: translateY(-1px);
+}
+.hero-actions {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
 }
 .back-button {
   margin-bottom: 28px;
