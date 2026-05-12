@@ -3770,3 +3770,160 @@ button {
     width: 100%;
   }
 }
+/* ===== Screen 3 / Interests redesign ===== */
+
+.interests-page {
+  min-height: 100vh;
+}
+
+.interests-screen {
+  width: min(760px, calc(100% - 32px));
+  min-height: 100vh;
+  margin: 0 auto;
+  padding: 34px 0 56px;
+}
+
+.onboarding-back {
+  border: none;
+  background: transparent;
+  color: rgba(255, 255, 255, 0.76);
+  font-size: 15px;
+  cursor: pointer;
+  margin-bottom: 18px;
+}
+
+.onboarding-back:hover {
+  color: white;
+}
+
+.interests-brand {
+  margin-bottom: 42px;
+}
+
+.interests-header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.interests-header h1 {
+  margin: 0 0 14px;
+  color: white;
+  font-size: clamp(38px, 6vw, 58px);
+  line-height: 1;
+  letter-spacing: -0.04em;
+}
+
+.interests-header p {
+  max-width: 620px;
+  margin: 0 auto;
+  color: rgba(255, 255, 255, 0.72);
+  font-size: 17px;
+  line-height: 1.5;
+}
+
+.interests-category-grid {
+  gap: 14px;
+}
+
+.interests-category-grid .category-card {
+  min-height: 64px;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.07);
+  border-color: rgba(255, 255, 255, 0.1);
+  color: white;
+  backdrop-filter: blur(10px);
+}
+
+.interests-category-grid .category-card:hover {
+  background: rgba(255, 255, 255, 0.11);
+}
+
+.interests-category-grid .card--selected {
+  color: white;
+  box-shadow: 0 14px 34px rgba(108, 92, 231, 0.22);
+}
+
+.interests-actions {
+  margin-top: 22px;
+}
+
+.interests-main-cta {
+  width: 100%;
+  justify-content: center;
+}
+
+.comfort-card {
+  margin-top: 20px;
+  padding: 22px;
+  border-radius: 26px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.11);
+  backdrop-filter: blur(12px);
+}
+
+.comfort-kicker {
+  margin: 0 0 6px;
+  color: #8b7cff;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.comfort-card h2 {
+  margin: 0 0 8px;
+  color: white;
+  font-size: 24px;
+  line-height: 1.1;
+}
+
+.comfort-card p {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.68);
+  font-size: 15px;
+  line-height: 1.45;
+}
+
+.comfort-button {
+  min-height: 48px;
+  padding: 0 18px;
+  border-radius: 16px;
+  border: 1px solid rgba(255,255,255,0.14);
+  background: rgba(255,255,255,0.08);
+  color: white;
+  font-weight: 700;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.comfort-button:hover {
+  background: rgba(255,255,255,0.13);
+}
+
+@media (max-width: 720px) {
+  .interests-screen {
+    padding-top: 24px;
+  }
+
+  .interests-brand {
+    margin-bottom: 34px;
+  }
+
+  .interests-category-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .comfort-card {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .comfort-button {
+    width: 100%;
+    justify-content: center;
+  }
+}

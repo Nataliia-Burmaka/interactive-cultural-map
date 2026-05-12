@@ -15,7 +15,7 @@ function HeroPage() {
           <div className="hero-copy">
             <p className="hero-kicker">City discovery companion</p>
             <h1>
-              Discover what really defines the city calmly and at your own pace.
+              Discover what really defines the city calmly and at your own pace
             </h1>
 
             <p className="hero-subtitle">
