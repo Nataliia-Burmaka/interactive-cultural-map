@@ -3927,3 +3927,73 @@ button {
     justify-content: center;
   }
 }
+/* ===== FIX Screen 3 / Interests visibility ===== */
+
+body:has(.interests-page) {
+  background: #080b1a !important;
+}
+
+.interests-page {
+  min-height: 100vh !important;
+  background:
+    radial-gradient(circle at 70% 25%, rgba(108, 92, 231, 0.24), transparent 30%),
+    radial-gradient(circle at 20% 90%, rgba(139, 124, 255, 0.16), transparent 28%),
+    linear-gradient(180deg, #080b1a 0%, #0b1023 100%) !important;
+  color: white !important;
+}
+
+.interests-screen {
+  width: min(760px, calc(100% - 32px));
+  min-height: 100vh;
+  margin: 0 auto;
+  padding: 32px 0 56px;
+}
+
+.interests-page h1,
+.interests-page h2,
+.interests-page p,
+.interests-page span,
+.interests-page button {
+  opacity: 1 !important;
+}
+
+.interests-header h1 {
+  color: #ffffff !important;
+}
+
+.interests-header p {
+  color: rgba(255, 255, 255, 0.72) !important;
+}
+
+.interests-category-grid .category-card {
+  background: rgba(255, 255, 255, 0.08) !important;
+  border: 1px solid rgba(255, 255, 255, 0.14) !important;
+  color: white !important;
+  box-shadow: none !important;
+}
+
+.interests-category-grid .category-card:hover {
+  background: rgba(255, 255, 255, 0.13) !important;
+}
+
+.interests-category-grid .card--selected {
+  background: linear-gradient(135deg, #6c5ce7, #8b7cff) !important;
+  color: white !important;
+}
+
+.comfort-card {
+  background: rgba(255, 255, 255, 0.08) !important;
+  border: 1px solid rgba(255, 255, 255, 0.14) !important;
+}
+
+.comfort-card h2 {
+  color: white !important;
+}
+
+.comfort-card p {
+  color: rgba(255, 255, 255, 0.7) !important;
+}
+
+.onboarding-back {
+  color: rgba(255, 255, 255, 0.75) !important;
+}
