@@ -455,12 +455,17 @@ function MapPage() {
               className="saved-link-button saved-link-button--primary"
               onClick={() => navigate("/saved")}
             >
-              ⭐ Saved places
+              <img src="/images/bird.png" alt="" className="saved-bird-icon" />
+              <span>Saved places</span>
             </button>
           </div>
         </div>
 
         <div className="map-header">
+          <div className="map-brand-row">
+            <img src="/images/bird.png" alt="" className="map-brand-bird" />
+            <span>Jyväskylä Unique</span>
+          </div>
           <h1 className="map-title">Explore nearby</h1>
           <p className="map-subtitle">
             Discover places with cultural impact around you
