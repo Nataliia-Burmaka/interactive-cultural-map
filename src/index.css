@@ -4648,19 +4648,25 @@ body:has(.interests-page) {
   }
 
   .map-page::after {
-    content: "";
-    position: fixed;
-    right: 6vw;
-    top: 170px;
-    width: 260px;
-    height: 260px;
-    background: url("/images/bird.png") center / contain no-repeat;
-    opacity: 0.08;
-    filter: drop-shadow(0 24px 60px rgba(108, 92, 231, 0.35));
-    pointer-events: none;
-    z-index: 0;
-  }
+  content: "";
+  position: absolute;
 
+  right: -40px;
+  bottom: 40px;
+
+  width: 420px;
+  height: 420px;
+
+  background: url("/images/bird.png") center / contain no-repeat;
+
+  opacity: 0.05;
+
+  filter: blur(0.3px);
+
+  pointer-events: none;
+
+  z-index: 0;
+}
   .map-shell {
     position: relative;
     z-index: 1;
