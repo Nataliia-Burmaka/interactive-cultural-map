@@ -37,42 +37,97 @@ function ResultsPage() {
   }
 
   return (
-    <div className="container">
-      <div className="results-top-row">
-        <button className="back-button" onClick={() => navigate(-1)}>
-          ← Back
-        </button>
+    <main className="results-page-dark">
+      <section className="results-screen">
+        <div className="results-top-row">
+          <button className="back-button" onClick={() => navigate(-1)}>
+            ← Back
+          </button>
 
-        <div className="results-top-actions">
+          <div className="results-top-actions">
+            <button
+              className="saved-link-button saved-link-button--primary"
+              onClick={() => navigate("/saved")}
+            >
+              ⭐ Saved places
+            </button>
+          </div>
+        </div>
+
+        <h1 className="results-title">Selected categories</h1>
+
+        <div className="selected-tags">
+          {selectedCategories.map((category) => (
+            <span key={category} className={getCategoryClass(category)}>
+              {category}
+            </span>
+          ))}
+        </div>
+
+        <div className="results-map-entry">
+          <div className="results-map-entry-text">
+            <h2>Explore on map</h2>
+            <p>
+              See these places in the city context and continue exploring
+              nearby.
+            </p>
+          </div>
+
           <button
-            className="saved-link-button saved-link-button--primary"
-            onClick={() => navigate("/saved")}
+            className="primary-button"
+            onClick={() => {
+              localStorage.setItem(
+                "selectedCategories",
+                JSON.stringify(selectedCategories),
+              );
+              localStorage.setItem("savedWalkMode", JSON.stringify(false));
+              navigate("/map?mode=interests");
+            }}
           >
-            ⭐ Saved places
+            🧭 Open cultural map
           </button>
         </div>
-      </div>
 
-      <h1 className="results-title">Selected categories</h1>
+        <div className="results-list">
+          {filteredPlaces.map((place) => (
+            <article key={place.id} className="place-card">
+              <img
+                src={place.image}
+                alt={place.title}
+                className="place-image"
+              />
+              <div className="place-content">
+                <div className="place-topline">
+                  <span className={getCategoryClass(place.category)}>
+                    {place.category}
+                  </span>
+                  <span className="dna">DNA {place.dna}</span>
+                </div>
 
-      <div className="selected-tags">
-        {selectedCategories.map((category) => (
-          <span key={category} className={getCategoryClass(category)}>
-            {category}
-          </span>
-        ))}
-      </div>
+                <h2>{place.title}</h2>
+                <p className="place-description">{place.description}</p>
 
-      <div className="results-map-entry">
-        <div className="results-map-entry-text">
-          <h2>Explore on map</h2>
-          <p>
-            See these places in the city context and continue exploring nearby.
-          </p>
+                <div className="place-actions">
+                  <button
+                    className="primary-button"
+                    onClick={() => navigate(`/place/${place.id}`)}
+                  >
+                    View details
+                  </button>
+
+                  <button
+                    className={`secondary-button ${savedIds.includes(place.id) ? "saved-button" : ""}`}
+                    onClick={() => handleSave(place.id)}
+                  >
+                    {savedIds.includes(place.id) ? "Saved ✓" : "Save for later"}
+                  </button>
+                </div>
+              </div>
+            </article>
+          ))}
         </div>
-
         <button
-          className="primary-button"
+          className="floating-map-button"
           onClick={() => {
             localStorage.setItem(
               "selectedCategories",
@@ -81,61 +136,13 @@ function ResultsPage() {
             localStorage.setItem("savedWalkMode", JSON.stringify(false));
             navigate("/map?mode=interests");
           }}
+          aria-label="Open cultural map"
+          title="Open cultural map"
         >
-          🧭 Open cultural map
+          🧭
         </button>
-      </div>
-
-      <div className="results-list">
-        {filteredPlaces.map((place) => (
-          <article key={place.id} className="place-card">
-            <img src={place.image} alt={place.title} className="place-image" />
-            <div className="place-content">
-              <div className="place-topline">
-                <span className={getCategoryClass(place.category)}>
-                  {place.category}
-                </span>
-                <span className="dna">DNA {place.dna}</span>
-              </div>
-
-              <h2>{place.title}</h2>
-              <p className="place-description">{place.description}</p>
-
-              <div className="place-actions">
-                <button
-                  className="primary-button"
-                  onClick={() => navigate(`/place/${place.id}`)}
-                >
-                  View details
-                </button>
-
-                <button
-                  className={`secondary-button ${savedIds.includes(place.id) ? "saved-button" : ""}`}
-                  onClick={() => handleSave(place.id)}
-                >
-                  {savedIds.includes(place.id) ? "Saved ✓" : "Save for later"}
-                </button>
-              </div>
-            </div>
-          </article>
-        ))}
-      </div>
-      <button
-        className="floating-map-button"
-        onClick={() => {
-          localStorage.setItem(
-            "selectedCategories",
-            JSON.stringify(selectedCategories),
-          );
-          localStorage.setItem("savedWalkMode", JSON.stringify(false));
-          navigate("/map?mode=interests");
-        }}
-        aria-label="Open cultural map"
-        title="Open cultural map"
-      >
-        🧭
-      </button>
-    </div>
+      </section>
+    </main>
   );
 }
 
