@@ -4333,3 +4333,22 @@ body:has(.interests-page) {
     font-size: 42px;
   }
 }
+.results-page-dark .place-card {
+  border: 1px solid rgba(255,255,255,0.16);
+}
+.results-page-dark .secondary-button {
+  background: rgba(139,124,255,0.10);
+  border: 1px solid rgba(139,124,255,0.18);
+}
+.saved-bird-icon {
+  width: 18px;
+  height: 18px;
+  object-fit: contain;
+  opacity: 0.92;
+}
+
+.saved-link-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}

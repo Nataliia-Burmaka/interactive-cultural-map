@@ -49,7 +49,9 @@ function ResultsPage() {
               className="saved-link-button saved-link-button--primary"
               onClick={() => navigate("/saved")}
             >
-              ⭐ Saved places
+              <img src="/images/bird.png" alt="" className="saved-bird-icon" />
+
+              <span>Saved places</span>
             </button>
           </div>
         </div>
