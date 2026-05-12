@@ -29,21 +29,17 @@ function HeroPage() {
             >
               Start exploring
             </button>
+            <button
+              className="hero-skip"
+              onClick={() => navigate("/interests")}
+            >
+              I already know how it works
+            </button>
           </div>
 
           <div className="hero-visual" aria-hidden="true">
             <div className="hero-glow" />
             <img src="/images/bird.png" alt="" className="hero-bird" />
-            <div className="city-silhouette">
-              <span />
-              <span />
-              <span />
-              <span />
-              <span />
-            </div>
-            <div className="floating-marker floating-marker--architecture">🏛️</div>
-            <div className="floating-marker floating-marker--nature">🌿</div>
-            <div className="floating-marker floating-marker--story">✦</div>
           </div>
         </div>
       </section>

@@ -3391,52 +3391,6 @@ button {
   filter: drop-shadow(0 30px 56px rgba(108, 92, 231, 0.38));
 }
 
-.city-silhouette {
-  position: absolute;
-  left: 8%;
-  right: 8%;
-  bottom: 14%;
-  height: 120px;
-  z-index: 2;
-  display: flex;
-  align-items: flex-end;
-  justify-content: center;
-  gap: 10px;
-  opacity: 0.65;
-}
-
-.city-silhouette span {
-  width: 52px;
-  border-radius: 16px 16px 0 0;
-  background: rgba(255, 255, 255, 0.09);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-}
-
-.city-silhouette span:nth-child(1) { height: 58px; }
-.city-silhouette span:nth-child(2) { height: 92px; }
-.city-silhouette span:nth-child(3) { height: 74px; }
-.city-silhouette span:nth-child(4) { height: 112px; }
-.city-silhouette span:nth-child(5) { height: 68px; }
-
-.floating-marker {
-  position: absolute;
-  z-index: 4;
-  width: 54px;
-  height: 54px;
-  display: grid;
-  place-items: center;
-  border-radius: 18px;
-  background: rgba(255, 255, 255, 0.12);
-  border: 1px solid rgba(255, 255, 255, 0.16);
-  backdrop-filter: blur(12px);
-  box-shadow: 0 16px 34px rgba(0, 0, 0, 0.18);
-  font-size: 24px;
-}
-
-.floating-marker--architecture { top: 20%; left: 14%; }
-.floating-marker--nature { top: 18%; right: 14%; }
-.floating-marker--story { bottom: 21%; left: 23%; color: #c4b5fd; }
-
 .how-screen {
   max-width: 980px;
 }
@@ -3702,19 +3656,8 @@ button {
     width: 250px;
   }
 
-  .city-silhouette {
-    height: 80px;
-    bottom: 8%;
-  }
-
-  .floating-marker {
-    width: 44px;
-    height: 44px;
-    border-radius: 15px;
-    font-size: 20px;
-  }
-
-  .how-header {
+  
+   .how-header {
     margin: 40px auto 26px;
   }
 
@@ -3760,6 +3703,49 @@ button {
   }
 
   .practical-button {
+    width: 100%;
+  }
+}
+.hero-skip {
+  margin-top: 18px;
+  border: none;
+  background: transparent;
+  color: rgba(255,255,255,0.72);
+  font-size: 15px;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+}
+
+.hero-skip:hover {
+  opacity: 1;
+  color: white;
+}
+.back-button {
+  margin-bottom: 28px;
+  border: none;
+  background: transparent;
+  color: rgba(255,255,255,0.82);
+  font-size: 15px;
+  cursor: pointer;
+}
+.step-preview {
+  width: 260px;
+  flex-shrink: 0;
+  border-radius: 22px;
+  overflow: hidden;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.1);
+  box-shadow: 0 14px 34px rgba(0,0,0,0.18);
+}
+
+.step-preview img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+@media (max-width: 760px) {
+  .step-preview {
     width: 100%;
   }
 }
