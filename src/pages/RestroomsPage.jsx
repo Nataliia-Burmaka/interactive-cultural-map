@@ -139,10 +139,12 @@ function RestroomsPage() {
 
           <div className="map-top-actions">
             <button
-              className="saved-link-button"
+              className="saved-link-button saved-link-button--primary"
               onClick={() => navigate("/map")}
             >
-              Cultural map
+              <img src="/images/bird.png" alt="" className="saved-bird-icon" />
+
+              <span>Cultural map</span>
             </button>
           </div>
         </div>
