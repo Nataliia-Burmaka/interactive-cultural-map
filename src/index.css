@@ -4682,3 +4682,30 @@ body:has(.interests-page) {
     line-height: 1.5 !important;
   }
 }
+.selected-tags--interactive {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.category-filter-chip {
+  cursor: pointer;
+  border: none;
+  transition:
+    transform 0.18s ease,
+    box-shadow 0.18s ease,
+    opacity 0.18s ease;
+}
+
+.category-filter-chip:hover {
+  transform: translateY(-1px);
+}
+
+.category-filter-chip--active {
+  box-shadow: 0 0 0 2px rgba(255,255,255,0.38);
+}
+
+.results-page-dark
+.category-filter-chip:not(.category-filter-chip--active) {
+  opacity: 0.62;
+}

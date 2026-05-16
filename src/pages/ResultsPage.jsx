@@ -14,6 +14,7 @@ function ResultsPage() {
   const [savedIds, setSavedIds] = useState(() => {
     return JSON.parse(localStorage.getItem("savedPlaces") || "[]");
   });
+  const [activeCategory, setActiveCategory] = useState(selectedCategories[0]);
 
   const params = new URLSearchParams(location.search);
   const selectedCategories = params.get("categories")?.split("|") || [];
@@ -24,6 +25,9 @@ function ResultsPage() {
       selectedCategories.includes(place.category),
     );
   }, [selectedCategories]);
+const visiblePlaces = useMemo(() => {
+  return filteredPlaces.filter((place) => place.category === activeCategory);
+}, [activeCategory, filteredPlaces]);
 
   function handleSave(placeId) {
     setSavedIds((prev) => {
@@ -58,11 +62,19 @@ function ResultsPage() {
 
         <h1 className="results-title">Selected categories</h1>
 
-        <div className="selected-tags">
+        <div className="selected-tags selected-tags--interactive">
           {selectedCategories.map((category) => (
-            <span key={category} className={getCategoryClass(category)}>
+            <button
+              key={category}
+              className={`${getCategoryClass(category)} category-filter-chip ${
+                activeCategory === category
+                  ? "category-filter-chip--active"
+                  : ""
+              }`}
+              onClick={() => setActiveCategory(category)}
+            >
               {category}
-            </span>
+            </button>
           ))}
         </div>
 
