@@ -140,10 +140,12 @@ function RestroomsPage() {
           <div className="map-top-actions">
             <button
               className="saved-link-button saved-link-button--primary"
-              onClick={() => navigate("/map")}
+              onClick={() => {
+                localStorage.setItem("savedWalkMode", JSON.stringify(false));
+                navigate("/map?mode=all");
+              }}
             >
-              <img src="/images/bird.png" alt="" className="saved-bird-icon" />
-
+              <span>🧭</span>
               <span>Cultural map</span>
             </button>
           </div>

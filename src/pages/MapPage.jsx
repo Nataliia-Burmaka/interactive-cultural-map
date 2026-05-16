@@ -183,7 +183,11 @@ function MapPage() {
     const params = new URLSearchParams(location.search);
     const modeFromUrl = params.get("mode");
 
-    if (modeFromUrl === "interests") {
+    if (modeFromUrl === "all") {
+      setViewMode("all");
+      setSavedWalkMode(false);
+      localStorage.setItem("savedWalkMode", JSON.stringify(false));
+    } else if (modeFromUrl === "interests") {
       setViewMode("interests");
       setSavedWalkMode(false);
       localStorage.setItem("savedWalkMode", JSON.stringify(false));
