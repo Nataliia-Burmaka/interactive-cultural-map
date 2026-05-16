@@ -11,13 +11,16 @@ function getCategoryClass(category) {
 function ResultsPage() {
   const navigate = useNavigate();
   const location = useLocation();
+  const params = new URLSearchParams(location.search);
+  const selectedCategories = params.get("categories")?.split("|") || [];
+
   const [savedIds, setSavedIds] = useState(() => {
     return JSON.parse(localStorage.getItem("savedPlaces") || "[]");
   });
-  const [activeCategory, setActiveCategory] = useState(selectedCategories[0]);
 
-  const params = new URLSearchParams(location.search);
-  const selectedCategories = params.get("categories")?.split("|") || [];
+  const [activeCategory, setActiveCategory] = useState(
+    selectedCategories[0] || "",
+  );
 
   const filteredPlaces = useMemo(() => {
     if (!selectedCategories.length) return [];
@@ -103,7 +106,7 @@ const visiblePlaces = useMemo(() => {
         </div>
 
         <div className="results-list">
-          {filteredPlaces.map((place) => (
+          {visiblePlaces.map((place) => (
             <article key={place.id} className="place-card">
               <img
                 src={place.image}
