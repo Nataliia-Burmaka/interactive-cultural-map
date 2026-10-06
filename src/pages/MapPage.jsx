@@ -47,6 +47,8 @@ function getCategoryColor(category) {
       return { stroke: "#047857", fill: "#34d399" };
     case "Sports Capital":
       return { stroke: "#1d4ed8", fill: "#60a5fa" };
+    case "Culinary Experience":
+      return { stroke: "#c2410c", fill: "#f97316" };
     default:
       return { stroke: "#1f2937", fill: "#111827" };
   }
@@ -120,6 +122,7 @@ const legendItems = [
   "Contemporary City",
   "Nature–Cultural Gems",
   "Sports Capital",
+  "Culinary Experience",
 ];
 
 function MapPage() {

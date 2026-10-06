@@ -3050,6 +3050,11 @@ img {
   border-color: #bfdbfe;
   color: #1d4ed8;
 }
+.category-pill--culinary-experience {
+  background: #fff7ed;
+  border-color: #fdba74;
+  color: #c2410c;
+}
 
 /* ===== Results / Saved navigation ===== */
 
@@ -4180,6 +4185,11 @@ body:has(.interests-page) {
 .interests-category-grid .card--selected.category-card--sports-capital {
   background: #3b82f6 !important;
   border-color: #3b82f6 !important;
+  color: white !important;
+}
+.interests-category-grid .card--selected.category-card--culinary-experience {
+  background: #f97316 !important;
+  border-color: #ea580c !important;
   color: white !important;
 }
 /* ===== Screen 3 scale polish ===== */
