@@ -4,6 +4,7 @@ export const categories = [
   "Contemporary City",
   "Nature–Cultural Gems",
   "Sports Capital",
+  "Culinary Experience",
 ];
 
 function createIndicators(cultural, local, unique) {
@@ -852,7 +853,7 @@ export const places = [
   {
     id: 33,
     title: "Teeleidi",
-    category: "Living Traditions",
+    category: "Culinary Experience",
     type: "local",
     priority: 3,
     tags: ["tea", "local charm", "historic atmosphere"],
@@ -1199,7 +1200,7 @@ export const places = [
   {
     id: 46,
     title: "Panda Factory & Outlet (Vaajakoski)",
-    category: "Contemporary City",
+    category: "Culinary Experience",
     type: "food-industry",
     priority: 4,
     tags: ["food culture", "Finnish brands", "factory"],
@@ -1225,7 +1226,7 @@ export const places = [
   {
     id: 47,
     title: "Kuokkala Manor (heritage & vintage collection)",
-    category: "Contemporary City",
+    category: "Culinary Experience",
     type: "hybrid-heritage",
     priority: 3,
     tags: ["manor", "vintage", "cars", "hidden"],
