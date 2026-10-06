@@ -4146,7 +4146,11 @@ body:has(.interests-page) {
   border-color: rgba(59, 130, 246, 0.42) !important;
   color: #bfdbfe !important;
 }
-
+.interests-category-grid .category-card--culinary-experience {
+  background: rgba(249, 115, 22, 0.13) !important;
+  border-color: rgba(249, 115, 22, 0.42) !important;
+  color: #fed7aa !important;
+}
 /* selected states */
 
 .interests-category-grid .card--selected.category-card--architectural-dna {
