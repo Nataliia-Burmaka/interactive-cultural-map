@@ -780,7 +780,13 @@ function MapPage() {
                       <div>
                         <h2>{selectedPlace.title}</h2>
                         <div className="map-bottom-sheet-meta">
-                          <span className="pill">{selectedPlace.category}</span>
+                          <span
+                            className={`category-pill category-pill--${selectedPlace.category
+                              .toLowerCase()
+                              .replace(/[^a-z0-9]+/g, "-")}`}
+                          >
+                            {selectedPlace.category}
+                          </span>
                           <span className="dna">DNA {selectedPlace.dna}</span>
                           <span className="map-distance">
                             {formatDistance(selectedPlace.distanceMeters)} away
